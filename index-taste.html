@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillRise: Engineering Career Architecture</title>
+  <meta name="description" content="The shortest path from your current code stack to staff-grade engineering hiring benchmarks. Calibrated roadmaps, system capstones, and interview defense.">
+
+  <!-- Typefaces: Inter Tight for editorial display & JetBrains Mono for telemetry -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       ARCHITECTURAL LIGHT DESIGN SYSTEM
+       DIALS:
+       DESIGN_VARIANCE: 9 (Bespoke studio layout, zero cookie-cutter cards)
+       MOTION_INTENSITY: 5 (Tactile mechanical state transitions)
+       VISUAL_DENSITY: 5 (Information-dense, high signal-to-noise ratio)
+       RULES: Zero em-dashes, porcelain light canvas, ink typography, WCAG AA.
+       ========================================================================== */
+
+    :root {
+      /* Porcelain Canvas */
+      --canvas: #F8F9FA;
+      --canvas-surface: #FFFFFF;
+      --canvas-subtle: #F1F3F5;
+      --canvas-hover: #E9ECEF;
+      --canvas-dark: #0F172A;
+
+      /* Ink Typography */
+      --text-main: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --text-inverse: #FFFFFF;
+
+      /* Structural Hairlines */
+      --line-subtle: #E2E8F0;
+      --line-strong: #CBD5E1;
+      --line-dark: #0F172A;
+
+      /* Single Accent: Deep Cobalt */
+      --accent: #2563EB;
+      --accent-subtle: #EFF6FF;
+      --accent-border: #BFDBFE;
+
+      /* Fonts */
+      --font-sans: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', Consolas, monospace;
+
+      /* Radii */
+      --radius-xs: 4px;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+
+      --container: 1180px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--canvas);
+      color: var(--text-main);
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--canvas);
+      color: var(--text-main);
+      line-height: 1.55;
+      min-height: 100dvh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select {
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+      border: none;
+      background: none;
+      outline: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    /* ==========================================================================
+       TOP UTILITY STRIP & NAVIGATION
+       ========================================================================== */
+    .top-telemetry-bar {
+      border-bottom: 1px solid var(--line-subtle);
+      background-color: var(--canvas-surface);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      padding: 8px 0;
+    }
+
+    .telemetry-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #059669;
+      font-weight: 500;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #059669;
+      border-radius: 50%;
+    }
+
+    .header-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line-subtle);
+      height: 64px;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.78rem;
+      background-color: var(--text-main);
+      color: #FFFFFF;
+      padding: 3px 7px;
+      border-radius: var(--radius-xs);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-link {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 150ms var(--ease);
+    }
+
+    .nav-link:hover {
+      color: var(--text-main);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 0.86rem;
+      padding: 9px 16px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: background-color 150ms var(--ease), border-color 150ms var(--ease), transform 150ms var(--ease);
+      white-space: nowrap;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-dark {
+      background-color: var(--canvas-dark);
+      color: #FFFFFF;
+      border: 1px solid var(--canvas-dark);
+    }
+
+    .btn-dark:hover {
+      background-color: #1E293B;
+    }
+
+    .btn-outline {
+      background-color: var(--canvas-surface);
+      color: var(--text-main);
+      border: 1px solid var(--line-strong);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--canvas-subtle);
+    }
+
+    .btn-lg {
+      padding: 13px 22px;
+      font-size: 0.94rem;
+    }
+
+    /* ==========================================================================
+       HERO: EDITORIAL MANIFESTO WITH INTEGRATED STUDIO
+       ========================================================================== */
+    .hero-wrap {
+      padding-top: 64px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--line-subtle);
+      background-color: var(--canvas-surface);
+    }
+
+    .hero-statement {
+      max-width: 880px;
+      margin-bottom: 40px;
+    }
+
+    .hero-meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 4.6vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+      color: var(--text-main);
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      max-width: 60ch;
+      margin-bottom: 28px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* ==========================================================================
+       INTERACTIVE CAREER ARCHITECTURE STUDIO (FULL-WIDTH INSTRUMENT)
+       ========================================================================== */
+    .studio-wrapper {
+      margin-top: 48px;
+      background-color: var(--canvas);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .studio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 18px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--line-subtle);
+    }
+
+    .studio-title {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-main);
+    }
+
+    .studio-controls-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr 0.9fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .control-block {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .control-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .selector-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .pill-btn {
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 7px 12px;
+      background-color: var(--canvas-surface);
+      border: 1px solid var(--line-subtle);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 140ms var(--ease);
+      color: var(--text-secondary);
+    }
+
+    .pill-btn:hover {
+      border-color: var(--line-strong);
+      color: var(--text-main);
+    }
+
+    .pill-btn.active {
+      background-color: var(--text-main);
+      color: #FFFFFF;
+      border-color: var(--text-main);
+      font-weight: 600;
+    }
+
+    /* Dynamic Output Specification Sheet */
+    .spec-sheet {
+      background-color: var(--canvas-surface);
+      border: 1px solid var(--line-subtle);
+      border-radius: var(--radius-md);
+      padding: 24px;
+    }
+
+    .spec-metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--line-subtle);
+    }
+
+    .spec-metric {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .spec-metric-caption {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .spec-metric-value {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+    }
+
+    .spec-capstones-header {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .capstone-rows-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .capstone-row {
+      display: grid;
+      grid-template-columns: 120px 1.4fr 1.2fr auto;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 14px;
+      background-color: var(--canvas);
+      border: 1px solid var(--line-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+    }
+
+    .capstone-step {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .capstone-title {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .capstone-tech {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    .capstone-rubric {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: #059669;
+      background-color: #ECFDF5;
+      padding: 3px 8px;
+      border-radius: var(--radius-xs);
+    }
+
+    /* ==========================================================================
+       SECTION: THE HIRING BAR (TUTORIALS VS REAL ENGINEERING)
+       ========================================================================== */
+    .section-padding {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--line-subtle);
+    }
+
+    .section-intro-stack {
+      margin-bottom: 40px;
+      max-width: 720px;
+    }
+
+    .section-heading {
+      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      color: var(--text-main);
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .section-subtext {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .comparison-table-wrap {
+      background-color: var(--canvas-surface);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .comparison-row {
+      display: grid;
+      grid-template-columns: 220px 1fr 1fr;
+      border-bottom: 1px solid var(--line-subtle);
+    }
+
+    .comparison-row:last-child {
+      border-bottom: none;
+    }
+
+    .comparison-header-row {
+      background-color: var(--canvas-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .comparison-cell {
+      padding: 16px 20px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .cell-dimension {
+      font-weight: 700;
+      color: var(--text-main);
+      background-color: var(--canvas);
+      border-right: 1px solid var(--line-subtle);
+      display: flex;
+      align-items: center;
+    }
+
+    .cell-tutorial {
+      color: var(--text-muted);
+      border-right: 1px solid var(--line-subtle);
+      background-color: #FFFDFD;
+    }
+
+    .cell-benchmark {
+      color: var(--text-main);
+      font-weight: 500;
+      background-color: #F8FAFC;
+    }
+
+    .cell-benchmark strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       SECTION: SYSTEM CAPSTONES (PROOF OF WORK ARTIFACTS)
+       ========================================================================== */
+    .capstone-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .artifact-card {
+      background-color: var(--canvas-surface);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 160ms var(--ease), border-color 160ms var(--ease);
+    }
+
+    .artifact-card:hover {
+      border-color: var(--text-main);
+      transform: translateY(-2px);
+    }
+
+    .artifact-index {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .artifact-heading {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .artifact-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .artifact-spec-box {
+      background-color: var(--canvas);
+      border: 1px solid var(--line-subtle);
+      border-radius: var(--radius-xs);
+      padding: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .artifact-spec-box strong {
+      color: var(--text-main);
+    }
+
+    .artifact-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--line-subtle);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* ==========================================================================
+       SECTION: CANDIDATE DOSSIERS (REAL TRANSITION OUTCOMES)
+       ========================================================================== */
+    .dossiers-table {
+      background-color: var(--canvas-surface);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .dossier-entry {
+      display: grid;
+      grid-template-columns: 240px 1.4fr 1fr;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--line-subtle);
+      align-items: center;
+      gap: 24px;
+    }
+
+    .dossier-entry:last-child {
+      border-bottom: none;
+    }
+
+    .dossier-person {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .dossier-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .dossier-path {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .dossier-detail {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .dossier-metrics {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+    }
+
+    .metric-lift {
+      color: #059669;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    /* ==========================================================================
+       BOTTOM CTA & FOOTER
+       ========================================================================== */
+    .bottom-cta-panel {
+      padding: 48px;
+      background-color: var(--canvas-surface);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      margin-bottom: 60px;
+    }
+
+    .bottom-cta-text h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+
+    .bottom-cta-text p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      max-width: 50ch;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line-subtle);
+      background-color: var(--canvas-surface);
+      padding: 36px 0;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* ==========================================================================
+       ACCESSIBLE MODAL: ROADMAP COMPILER DIALOG
+       ========================================================================== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-window {
+      background-color: var(--canvas-surface);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-lg);
+      max-width: 500px;
+      width: 100%;
+      padding: 32px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-xs);
+      background-color: var(--canvas-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .modal-close:hover {
+      color: var(--text-main);
+    }
+
+    .form-group {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .form-input, .form-select {
+      background-color: var(--canvas);
+      border: 1px solid var(--line-strong);
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      font-size: 0.88rem;
+    }
+
+    .form-input:focus, .form-select:focus {
+      border-color: var(--accent);
+      background-color: var(--canvas-surface);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE COLLAPSE
+       ========================================================================== */
+    @media (max-width: 960px) {
+      .studio-controls-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .spec-metrics-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .capstone-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .comparison-row {
+        grid-template-columns: 1fr;
+      }
+
+      .cell-dimension {
+        border-right: none;
+        border-bottom: 1px solid var(--line-subtle);
+        background-color: var(--canvas-subtle);
+      }
+
+      .dossier-entry {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .dossier-metrics {
+        align-items: flex-start;
+      }
+
+      .capstone-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .top-telemetry-bar {
+        display: none;
+      }
+
+      .bottom-cta-panel {
+        padding: 28px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       TOP TELEMETRY BAR
+       ========================================================================== -->
+  <div class="top-telemetry-bar">
+    <div class="container">
+      <div class="telemetry-row">
+        <span>SkillRise Engineering Studio: Version 2026.4</span>
+        <div class="status-indicator">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Verified Hiring Benchmarks Synchronized</span>
+        </div>
+        <span>Target Roles: L4/L5 Engineering Calibration</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MAIN NAVIGATION
+       ========================================================================== -->
+  <header class="header-nav" role="banner">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#studio" class="brand" aria-label="SkillRise Homepage">
+          <span class="brand-mark">SR</span>
+          <span>SkillRise</span>
+        </a>
+
+        <nav class="nav-links" role="navigation" aria-label="Main Navigation">
+          <a href="#studio" class="nav-link">Architecture Studio</a>
+          <a href="#hiring-bar" class="nav-link">The Hiring Bar</a>
+          <a href="#proof-of-work" class="nav-link">Proof of Work</a>
+          <a href="#dossiers" class="nav-link">Transition Dossiers</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="btn btn-dark" onclick="openRoadmapDialog()">Compile Custom Plan</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ==========================================================================
+         HERO: EDITORIAL STATEMENT WITH EMBEDDED ARCHITECTURE STUDIO
+         ========================================================================== -->
+    <section class="hero-wrap" aria-label="Hero Section">
+      <div class="container">
+        
+        <div class="hero-statement">
+          <div class="hero-meta-label">Technical Career Architecture</div>
+          <h1 class="hero-title">The shortest path to a staff-grade engineering offer.</h1>
+          <p class="hero-subtitle">
+            AI-calibrated roadmaps mapping your current code directly to verified engineering hiring benchmarks.
+          </p>
+
+          <div class="hero-cta-row">
+            <button class="btn btn-dark btn-lg" onclick="openRoadmapDialog()">Configure Your Roadmap</button>
+            <a href="#hiring-bar" class="btn btn-outline btn-lg">Inspect The Hiring Bar</a>
+          </div>
+        </div>
+
+        <!-- THE INTERACTIVE CAREER STUDIO INSTRUMENT -->
+        <div class="studio-wrapper" id="studio" aria-label="Interactive Career Architecture Studio">
+          
+          <div class="studio-header">
+            <span class="studio-title">Interactive Studio: Live Candidate Configuration</span>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted);">
+              Select parameters to generate real-time execution specs
+            </span>
+          </div>
+
+          <!-- Studio Parameter Controls -->
+          <div class="studio-controls-grid">
+            
+            <!-- Origin Stack -->
+            <div class="control-block">
+              <span class="control-label">1. Current Background</span>
+              <div class="selector-pills" id="originPills">
+                <button class="pill-btn active" onclick="setOrigin(this, 'cs')">CS Graduate</button>
+                <button class="pill-btn" onclick="setOrigin(this, 'selftaught')">Self-Taught</button>
+                <button class="pill-btn" onclick="setOrigin(this, 'frontend')">Junior Frontend</button>
+                <button class="pill-btn" onclick="setOrigin(this, 'qa')">QA / Analyst</button>
+              </div>
+            </div>
+
+            <!-- Target Domain -->
+            <div class="control-block">
+              <span class="control-label">2. Target Engineering Discipline</span>
+              <div class="selector-pills" id="targetPills">
+                <button class="pill-btn active" onclick="setTarget(this, 'ai')">AI Systems &amp; LLM Infra</button>
+                <button class="pill-btn" onclick="setTarget(this, 'backend')">High-Throughput Full-Stack</button>
+                <button class="pill-btn" onclick="setTarget(this, 'cloud')">Cloud Platform &amp; SRE</button>
+                <button class="pill-btn" onclick="setTarget(this, 'data')">Distributed Data Arch</button>
+              </div>
+            </div>
+
+            <!-- Pacing Commitment -->
+            <div class="control-block">
+              <span class="control-label">3. Weekly Pacing</span>
+              <div class="selector-pills" id="pacingPills">
+                <button class="pill-btn" onclick="setPacing(this, 10)">10 hrs/wk</button>
+                <button class="pill-btn active" onclick="setPacing(this, 16)">16 hrs/wk</button>
+                <button class="pill-btn" onclick="setPacing(this, 25)">25 hrs/wk</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Dynamic Output Specification Sheet -->
+          <div class="spec-sheet">
+            <div class="spec-metrics-bar">
+              <div class="spec-metric">
+                <span class="spec-metric-caption">Target Salary Baseline</span>
+                <span class="spec-metric-value" id="specSalary">$145k-$185k</span>
+              </div>
+              <div class="spec-metric">
+                <span class="spec-metric-caption">Estimated Roadmap Length</span>
+                <span class="spec-metric-value" id="specDuration">12 Weeks (192 Hours)</span>
+              </div>
+              <div class="spec-metric">
+                <span class="spec-metric-caption">Screening Pass Probability</span>
+                <span class="spec-metric-value" id="specPassRate">88% Post-Capstone</span>
+              </div>
+              <div class="spec-metric">
+                <span class="spec-metric-caption">Critical Screening Risk</span>
+                <span class="spec-metric-value" id="specRisk" style="font-size: 0.95rem; color: #DC2626;">Memory &amp; GPU Constraints</span>
+              </div>
+            </div>
+
+            <div class="spec-capstones-header">
+              <span>Required Capstone Architecture Artifacts (Proof of Work)</span>
+              <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted);">
+                Must pass automated code review and live defense
+              </span>
+            </div>
+
+            <div class="capstone-rows-container" id="capstoneList">
+              <div class="capstone-row">
+                <span class="capstone-step">Artifact 01</span>
+                <span class="capstone-title">Token-Streaming Retrieval Proxy</span>
+                <span class="capstone-tech">vLLM, Python, Vector Indexing</span>
+                <span class="capstone-rubric">Sub-100ms TTFT</span>
+              </div>
+              <div class="capstone-row">
+                <span class="capstone-step">Artifact 02</span>
+                <span class="capstone-title">Distributed Evaluation Framework</span>
+                <span class="capstone-tech">PyTorch, LoRA, QLoRA Tuning</span>
+                <span class="capstone-rubric">BLEU &amp; Hallucination Audit</span>
+              </div>
+              <div class="capstone-row">
+                <span class="capstone-step">Artifact 03</span>
+                <span class="capstone-title">Multi-Agent Planning Engine</span>
+                <span class="capstone-tech">LangGraph, Redis Memory, Async Tasks</span>
+                <span class="capstone-rubric">Idempotent Execution</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION: THE HIRING BAR (TUTORIALS VS WHAT STAFF ENGINEERS SCREEN FOR)
+         ========================================================================== -->
+    <section class="section-padding" id="hiring-bar" aria-labelledby="hiringBarHeading">
+      <div class="container">
+        
+        <div class="section-intro-stack">
+          <h2 class="section-heading" id="hiringBarHeading">The Hiring Bar: Why tutorial portfolios fail technical screens.</h2>
+          <p class="section-subtext">
+            Hiring managers reject 90% of applicant portfolios within 30 seconds because they look identical: generic wrapper apps with zero production depth. Here is what interviewers actually measure.
+          </p>
+        </div>
+
+        <div class="comparison-table-wrap">
+          <div class="comparison-row comparison-header-row">
+            <div class="comparison-cell cell-dimension">Engineering Dimension</div>
+            <div class="comparison-cell">Typical Tutorial Trap (Rejected)</div>
+            <div class="comparison-cell">SkillRise Hiring Benchmark (Passed)</div>
+          </div>
+
+          <div class="comparison-row">
+            <div class="comparison-cell cell-dimension">System Complexity</div>
+            <div class="comparison-cell cell-tutorial">
+              Cloned e-commerce sites, generic todo apps, or static CRUD dashboards without concurrency handling.
+            </div>
+            <div class="comparison-cell cell-benchmark">
+              <strong>Distributed rate limiters, write-ahead logs, idempotency tokens</strong>, and handling partial node failures under high QPS.
+            </div>
+          </div>
+
+          <div class="comparison-row">
+            <div class="comparison-cell cell-dimension">AI &amp; LLM Implementation</div>
+            <div class="comparison-cell cell-tutorial">
+              Calling OpenAI API with 10 lines of Python and returning raw strings to a basic chat box.
+            </div>
+            <div class="comparison-cell cell-benchmark">
+              <strong>Token budgeting, latency SLOs, custom RAG evaluation metrics</strong>, and local model quantization with vLLM.
+            </div>
+          </div>
+
+          <div class="comparison-row">
+            <div class="comparison-cell cell-dimension">Database &amp; Storage</div>
+            <div class="comparison-cell cell-tutorial">
+              Basic ORM queries without indexes, running SELECT * on unconstrained tables.
+            </div>
+            <div class="comparison-cell cell-benchmark">
+              <strong>EXPLAIN ANALYZE query plan tuning</strong>, connection pooling saturation limits, isolation levels, and composite indexes.
+            </div>
+          </div>
+
+          <div class="comparison-row">
+            <div class="comparison-cell cell-dimension">Technical Defense</div>
+            <div class="comparison-cell cell-tutorial">
+              Memorizing LeetCode syntax tricks without understanding architectural tradeoffs.
+            </div>
+            <div class="comparison-cell cell-benchmark">
+              <strong>Live whiteboard system walkthroughs</strong>: justifying CAP theorem tradeoffs, failure modes, and operational costs.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION: SYSTEM CAPSTONES (PROOF OF WORK ARTIFACTS)
+         ========================================================================== -->
+    <section class="section-padding" id="proof-of-work" aria-labelledby="proofHeading">
+      <div class="container">
+        
+        <div class="section-intro-stack">
+          <h2 class="section-heading" id="proofHeading">Proof of Work: Verified system capstones that anchor interviews.</h2>
+          <p class="section-subtext">
+            Candidates build production-grade, open-source engineering systems that demonstrate senior judgment, complete with benchmarks, unit tests, and architecture RFCs.
+          </p>
+        </div>
+
+        <div class="capstone-grid">
+          
+          <div class="artifact-card">
+            <div>
+              <div class="artifact-index">SYSTEM ARTIFACT 01</div>
+              <h3 class="artifact-heading">Distributed In-Memory Key-Value Store</h3>
+              <p class="artifact-desc">
+                Fault-tolerant replicated datastore implementing Raft consensus, write-ahead logging, and crash-recovery procedures.
+              </p>
+              <div class="artifact-spec-box">
+                Stack: <strong>Go, gRPC, Protocol Buffers, Raft</strong><br>
+                Throughput: <strong>52,000 QPS @ p99 &lt; 4ms</strong><br>
+                Verification: <strong>Chaos mesh network split tests</strong>
+              </div>
+            </div>
+            <div class="artifact-footer">
+              <span>View System RFC &rarr;</span>
+              <span style="font-family: var(--font-mono); color: var(--text-muted);">Go Core</span>
+            </div>
+          </div>
+
+          <div class="artifact-card">
+            <div>
+              <div class="artifact-index">SYSTEM ARTIFACT 02</div>
+              <h3 class="artifact-heading">High-Throughput RAG &amp; Evaluation Engine</h3>
+              <p class="artifact-desc">
+                Production retrieval-augmented generation engine with semantic chunking, hybrid BM25/vector search, and automated hallucination scoring.
+              </p>
+              <div class="artifact-spec-box">
+                Stack: <strong>Python, vLLM, pgvector, LangGraph</strong><br>
+                Latency: <strong>Sub-120ms first-token latency</strong><br>
+                Verification: <strong>Ragas automated evaluation suite</strong>
+              </div>
+            </div>
+            <div class="artifact-footer">
+              <span>View System RFC &rarr;</span>
+              <span style="font-family: var(--font-mono); color: var(--text-muted);">Python / vLLM</span>
+            </div>
+          </div>
+
+          <div class="artifact-card">
+            <div>
+              <div class="artifact-index">SYSTEM ARTIFACT 03</div>
+              <h3 class="artifact-heading">Multi-Region Event Ingestion Engine</h3>
+              <p class="artifact-desc">
+                Distributed pub-sub event router handling streaming telemetries with exactly-once processing guarantees and DuckDB local caching.
+              </p>
+              <div class="artifact-spec-box">
+                Stack: <strong>Rust, Apache Kafka, DuckDB, Redis</strong><br>
+                Throughput: <strong>100k events/sec sustained</strong><br>
+                Verification: <strong>Zero packet loss under simulated partition</strong>
+              </div>
+            </div>
+            <div class="artifact-footer">
+              <span>View System RFC &rarr;</span>
+              <span style="font-family: var(--font-mono); color: var(--text-muted);">Rust Core</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION: CANDIDATE DOSSIERS (REAL TRANSITION OUTCOMES)
+         ========================================================================== -->
+    <section class="section-padding" id="dossiers" aria-labelledby="dossierHeading">
+      <div class="container">
+        
+        <div class="section-intro-stack">
+          <h2 class="section-heading" id="dossierHeading">Transition Dossiers: Real engineers, verified trajectories.</h2>
+          <p class="section-subtext">
+            No anonymous review cards. Real transition profiles demonstrating exact starting positions, time commitments, and final verified engineering offers.
+          </p>
+        </div>
+
+        <div class="dossiers-table">
+          
+          <div class="dossier-entry">
+            <div class="dossier-person">
+              <span class="dossier-name">Priya Sundaram</span>
+              <span class="dossier-path">Tier-3 CS Graduate to Cloud Platform Engineer</span>
+            </div>
+            <div class="dossier-detail">
+              "My university courses never touched Terraform, K8s, or distributed tracing. Building the Key-Value store capstone gave me a concrete system to defend in my final round at a Cloudflare partner."
+            </div>
+            <div class="dossier-metrics">
+              <span class="metric-lift">+52% Compensation</span>
+              <span style="color: var(--text-muted);">Timeline: 12 Weeks (16 hrs/wk)</span>
+            </div>
+          </div>
+
+          <div class="dossier-entry">
+            <div class="dossier-person">
+              <span class="dossier-name">Daniel Vance</span>
+              <span class="dossier-path">Junior Frontend to AI Systems Engineer</span>
+            </div>
+            <div class="dossier-detail">
+              "Everyone was claiming they knew AI by calling OpenAI endpoints. The SkillRise roadmap forced me to learn vLLM memory batching and quantization. That single differentiator got me into a Series B AI startup."
+            </div>
+            <div class="dossier-metrics">
+              <span class="metric-lift">Series B Offer ($165k Base)</span>
+              <span style="color: var(--text-muted);">Timeline: 14 Weeks (20 hrs/wk)</span>
+            </div>
+          </div>
+
+          <div class="dossier-entry">
+            <div class="dossier-person">
+              <span class="dossier-name">Amina Al-Mansoor</span>
+              <span class="dossier-path">QA Analyst to Backend Distributed Systems</span>
+            </div>
+            <div class="dossier-detail">
+              "I had testing experience but zero database query optimization proof. Working through PostgreSQL lock debugging and deadlocks gave me the vocabulary to pass senior technical screens."
+            </div>
+            <div class="dossier-metrics">
+              <span class="metric-lift">+40% Compensation</span>
+              <span style="color: var(--text-muted);">Timeline: 11 Weeks (14 hrs/wk)</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Conversion Callout Panel -->
+        <div class="bottom-cta-panel">
+          <div class="bottom-cta-text">
+            <h3>Ready to build a defensible engineering career?</h3>
+            <p>Define your starting stack and target role. Receive a custom 12-week blueprint calibrated directly to production benchmarks.</p>
+          </div>
+          <button class="btn btn-dark btn-lg" onclick="openRoadmapDialog()">Compile Roadmap Now</button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-flex">
+        <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--text-main);">
+          <span class="brand-mark">SR</span>
+          <span>SkillRise Career Architecture</span>
+        </div>
+
+        <div style="display: flex; gap: 24px;">
+          <a href="#studio">Studio</a>
+          <a href="#hiring-bar">Hiring Bar</a>
+          <a href="#proof-of-work">Proof of Work</a>
+          <a href="#dossiers">Dossiers</a>
+        </div>
+
+        <div>
+          <span>&copy; 2026 SkillRise AI. Built for self-directed engineering excellence.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODAL: CUSTOM ROADMAP GENERATOR
+       ========================================================================== -->
+  <div class="modal-overlay" id="roadmapModal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+    <div class="modal-window">
+      <button class="modal-close" onclick="closeRoadmapDialog()" aria-label="Close dialog">&times;</button>
+      
+      <h3 id="modalHeading" style="font-size: 1.3rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">
+        Compile Your Engineering Roadmap
+      </h3>
+      <p style="font-size: 0.86rem; color: var(--text-secondary); margin-bottom: 18px;">
+        Generate a verifiable milestone schedule calibrated to current hiring criteria.
+      </p>
+
+      <form onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="userName">Full Name</label>
+          <input class="form-input" type="text" id="userName" placeholder="e.g. Alex Morgan" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="userTarget">Target Engineering Domain</label>
+          <select class="form-select" id="userTarget" required>
+            <option value="ai">AI Systems &amp; LLM Infra</option>
+            <option value="backend">High-Throughput Full-Stack</option>
+            <option value="cloud">Cloud Platform &amp; SRE</option>
+            <option value="data">Distributed Data Architecture</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="userHours">Weekly Availability</label>
+          <select class="form-select" id="userHours" required>
+            <option value="10">10 hours / week (Paced)</option>
+            <option value="16" selected>16 hours / week (Recommended Standard)</option>
+            <option value="25">25 hours / week (Intensive Accelerator)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-dark btn-lg" style="width: 100%; margin-top: 24px;">
+          Generate My Engineering Plan &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       STUDIO REACTIVE CLIENT SCRIPTS
+       ========================================================================== -->
+  <script>
+    // State of the interactive studio
+    let studioState = {
+      origin: 'cs',
+      target: 'ai',
+      pacing: 16
+    };
+
+    const targetSpecs = {
+      ai: {
+        salary: "$145k-$185k",
+        durationBase: 12,
+        passRate: "88%",
+        risk: "Memory & GPU Constraints",
+        capstones: [
+          { step: "Artifact 01", title: "Token-Streaming Retrieval Proxy", tech: "vLLM, Python, Vector Indexing", rubric: "Sub-100ms TTFT" },
+          { step: "Artifact 02", title: "Distributed Evaluation Framework", tech: "PyTorch, LoRA, QLoRA Tuning", rubric: "BLEU & Hallucination Audit" },
+          { step: "Artifact 03", title: "Multi-Agent Planning Engine", tech: "LangGraph, Redis Memory, Async Tasks", rubric: "Idempotent Execution" }
+        ]
+      },
+      backend: {
+        salary: "$130k-$165k",
+        durationBase: 10,
+        passRate: "91%",
+        risk: "Database Locks & Partitioning",
+        capstones: [
+          { step: "Artifact 01", title: "Distributed Rate Limiter", tech: "Go / Node, Redis Token Bucket", rubric: "50k QPS Resilience" },
+          { step: "Artifact 02", title: "PostgreSQL Query Plan Optimizer", tech: "Postgres, EXPLAIN ANALYZE, Composite Indexes", rubric: "Zero Full-Table Scans" },
+          { step: "Artifact 03", title: "Idempotent Webhook Engine", tech: "TypeScript, RabbitMQ / SQS, Redis Locks", rubric: "Zero Duplicate Processing" }
+        ]
+      },
+      cloud: {
+        salary: "$135k-$175k",
+        durationBase: 12,
+        passRate: "89%",
+        risk: "Network Partition Handling",
+        capstones: [
+          { step: "Artifact 01", title: "Multi-Stage Container Pipeline", tech: "Docker, Distroless Images, Trivy Scan", rubric: "Sub-50MB Hardened Images" },
+          { step: "Artifact 02", title: "Declarative K8s Cluster with Ingress", tech: "Kubernetes, Helm, Envoy, Terraform", rubric: "Zero-Downtime Rollouts" },
+          { step: "Artifact 03", title: "Prometheus SRE Telemetry Stack", tech: "Prometheus, Grafana, Alertmanager", rubric: "SLO Alerting & Recovery" }
+        ]
+      },
+      data: {
+        salary: "$135k-$170k",
+        durationBase: 11,
+        passRate: "86%",
+        risk: "Stream Deduplication & Skew",
+        capstones: [
+          { step: "Artifact 01", title: "Real-Time Kafka Event Router", tech: "Apache Kafka, Python, Avro Schemas", rubric: "Exactly-Once Processing" },
+          { step: "Artifact 02", title: "Analytical dbt Star-Schema Warehouse", tech: "DuckDB, dbt, Snowflake", rubric: "Automated Data Quality Tests" },
+          { step: "Artifact 03", title: "Low-Latency Feature Store", tech: "Redis, Feast, FastAPI", rubric: "Sub-15ms Feature Retrieval" }
+        ]
+      }
+    };
+
+    function updateStudioOutput() {
+      const spec = targetSpecs[studioState.target];
+      if (!spec) return;
+
+      // Calculate adjusted weeks based on pacing (16 hrs/wk is baseline)
+      const adjustedWeeks = Math.round(spec.durationBase * (16 / studioState.pacing));
+      const totalHours = adjustedWeeks * studioState.pacing;
+
+      document.getElementById('specSalary').textContent = spec.salary;
+      document.getElementById('specDuration').textContent = `${adjustedWeeks} Weeks (${totalHours} Hours)`;
+      document.getElementById('specPassRate').textContent = `${spec.passRate} Post-Capstone`;
+      document.getElementById('specRisk').textContent = spec.risk;
+
+      const capstoneContainer = document.getElementById('capstoneList');
+      if (capstoneContainer) {
+        capstoneContainer.innerHTML = spec.capstones.map(c => `
+          <div class="capstone-row">
+            <span class="capstone-step">${c.step}</span>
+            <span class="capstone-title">${c.title}</span>
+            <span class="capstone-tech">${c.tech}</span>
+            <span class="capstone-rubric">${c.rubric}</span>
+          </div>
+        `).join('');
+      }
+    }
+
+    function setOrigin(btn, key) {
+      studioState.origin = key;
+      document.querySelectorAll('#originPills .pill-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      updateStudioOutput();
+    }
+
+    function setTarget(btn, key) {
+      studioState.target = key;
+      document.querySelectorAll('#targetPills .pill-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      updateStudioOutput();
+    }
+
+    function setPacing(btn, hours) {
+      studioState.pacing = hours;
+      document.querySelectorAll('#pacingPills .pill-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      updateStudioOutput();
+    }
+
+    // Modal Control
+    function openRoadmapDialog() {
+      const modal = document.getElementById('roadmapModal');
+      if (modal) {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeRoadmapDialog() {
+      const modal = document.getElementById('roadmapModal');
+      if (modal) {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeRoadmapDialog();
+    });
+
+    const modalBackdrop = document.getElementById('roadmapModal');
+    if (modalBackdrop) {
+      modalBackdrop.addEventListener('click', (e) => {
+        if (e.target === modalBackdrop) closeRoadmapDialog();
+      });
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const targetSelect = document.getElementById('userTarget');
+      if (targetSelect) {
+        const val = targetSelect.value;
+        const targetBtn = document.querySelector(`#targetPills .pill-btn[onclick*="${val}"]`);
+        if (targetBtn) {
+          setTarget(targetBtn, val);
+        }
+      }
+      closeRoadmapDialog();
+      const studio = document.getElementById('studio');
+      if (studio) {
+        studio.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+</html>

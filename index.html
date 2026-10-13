@@ -1,0 +1,2953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillRise AI — Your Future Career Starts With One Skill</title>
+  <meta name="description" content="Discover your strengths, build in-demand skills, and follow a personalised career roadmap powered by AI. Designed for students, fresh graduates, and career changers.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans for structural clarity & JetBrains Mono for technical precision -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* -------------------------------------------------------------
+       CSS DESIGN TOKENS & RESET
+       ------------------------------------------------------------- */
+    :root {
+      /* Dark Canvas & Backgrounds */
+      --bg-base: #090D16;
+      --bg-elevated-1: #0F1626;
+      --bg-elevated-2: #151F33;
+      --bg-elevated-3: #1D2A44;
+      --bg-surface-glass: rgba(15, 22, 38, 0.85);
+
+      /* Off-white and Light Surfaces for contrast */
+      --surface-warm-offwhite: #F4F5F8;
+      --surface-warm-subtle: #E8EBF0;
+
+      /* Text Hierarchy */
+      --text-white: #FFFFFF;
+      --text-primary: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --text-dark: #0F172A;
+
+      /* Borders */
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-medium: rgba(255, 255, 255, 0.16);
+      --border-accent: rgba(37, 99, 235, 0.4);
+
+      /* Restrained Accent Palette */
+      --accent-blue: #2563EB;
+      --accent-blue-light: #3B82F6;
+      --accent-blue-dim: rgba(37, 99, 235, 0.15);
+      
+      --accent-emerald: #10B981;
+      --accent-emerald-dim: rgba(16, 185, 129, 0.15);
+
+      --accent-amber: #F59E0B;
+      --accent-amber-dim: rgba(245, 158, 11, 0.15);
+
+      --accent-indigo: #6366F1;
+      --accent-indigo-dim: rgba(99, 102, 241, 0.15);
+
+      --accent-rose: #F43F5E;
+      --accent-rose-dim: rgba(244, 63, 94, 0.15);
+
+      /* Typography */
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', SFMono-Regular, Consolas, monospace;
+
+      /* Radii & Shadows */
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --radius-pill: 9999px;
+
+      --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.35);
+      --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.5);
+      --shadow-lg: 0 20px 48px -8px rgba(0, 0, 0, 0.7);
+
+      --container-max: 1200px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      background: none;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* -------------------------------------------------------------
+       BUTTONS & INTERACTIVE ELEMENTS
+       ------------------------------------------------------------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      text-decoration: none;
+      position: relative;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--accent-blue-light);
+      outline-offset: 3px;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-blue);
+      color: var(--text-white);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-blue-light);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background-color: var(--bg-elevated-2);
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-elevated-3);
+      border-color: rgba(255, 255, 255, 0.3);
+      color: var(--text-white);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary:active {
+      transform: translateY(0);
+    }
+
+    .btn-nav {
+      padding: 9px 18px;
+      font-size: 0.88rem;
+    }
+
+    .btn-lg {
+      padding: 14px 28px;
+      font-size: 1.05rem;
+    }
+
+    /* Kicker / Label Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      background-color: var(--bg-elevated-2);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--accent-emerald);
+      box-shadow: 0 0 8px var(--accent-emerald);
+    }
+
+    /* -------------------------------------------------------------
+       NAVIGATION BAR
+       ------------------------------------------------------------- */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: var(--bg-surface-glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      height: 72px;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+      color: var(--text-white);
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--accent-blue), #1D4ED8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-white);
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+    }
+
+    .brand-logo .ai-tag {
+      color: var(--accent-blue-light);
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      position: relative;
+      padding: 4px 0;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-white);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: var(--accent-blue);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* Mobile hamburger button */
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      padding: 6px;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-elevated-2);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .mobile-menu-btn span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: var(--text-primary);
+      border-radius: 2px;
+      transition: all 0.25s ease;
+    }
+
+    /* -------------------------------------------------------------
+       HERO SECTION
+       ------------------------------------------------------------- */
+    .hero-section {
+      padding: 72px 0 88px;
+      position: relative;
+      border-bottom: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at 80% 15%, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 4.2vw, 3.75rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.035em;
+      color: var(--text-white);
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(120deg, #FFFFFF 30%, var(--accent-blue-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+      font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+      line-height: 1.6;
+      color: var(--text-secondary);
+      max-width: 540px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .hero-social-proof {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 12px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-subtle);
+      width: 100%;
+    }
+
+    .proof-avatars {
+      display: flex;
+      align-items: center;
+    }
+
+    .avatar-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid var(--bg-base);
+      margin-left: -8px;
+      background-color: var(--bg-elevated-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .avatar-circle:first-child {
+      margin-left: 0;
+      background: #2563EB;
+      color: #fff;
+    }
+    .avatar-circle:nth-child(2) {
+      background: #10B981;
+      color: #fff;
+    }
+    .avatar-circle:nth-child(3) {
+      background: #8B5CF6;
+      color: #fff;
+    }
+
+    .proof-text {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+    }
+
+    .proof-text strong {
+      color: var(--text-primary);
+    }
+
+    /* -------------------------------------------------------------
+       HERO PRODUCT PREVIEW (Interactive & Realistic UI Card)
+       ------------------------------------------------------------- */
+    .preview-card-wrapper {
+      position: relative;
+    }
+
+    .preview-card {
+      background-color: var(--bg-elevated-1);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Window Header */
+    .preview-header {
+      background-color: var(--bg-elevated-2);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .window-controls {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .control-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .window-title {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .preview-status {
+      font-size: 0.72rem;
+      font-weight: 600;
+      background-color: var(--accent-emerald-dim);
+      color: var(--accent-emerald);
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .preview-status::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: var(--accent-emerald);
+    }
+
+    /* Window Body */
+    .preview-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Target Role & Readiness */
+    .target-role-block {
+      background-color: var(--bg-elevated-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .role-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .role-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-blue-light);
+    }
+
+    .role-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+
+    .role-timeline {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .readiness-gauge {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .readiness-number {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--accent-emerald);
+      line-height: 1;
+      font-feature-settings: "tnum";
+    }
+
+    .readiness-text {
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+    }
+
+    /* Verified Skill Chips */
+    .skills-cluster {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .skills-cluster-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .skill-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      padding: 5px 10px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .skill-tag.completed {
+      background-color: rgba(16, 185, 129, 0.08);
+      color: #34D399;
+      border-color: rgba(16, 185, 129, 0.25);
+    }
+
+    .skill-tag.in-progress {
+      background-color: rgba(37, 99, 235, 0.1);
+      color: #60A5FA;
+      border-color: rgba(37, 99, 235, 0.3);
+    }
+
+    .skill-tag.upcoming {
+      background-color: var(--bg-elevated-2);
+      color: var(--text-secondary);
+    }
+
+    /* Active Sprint Task */
+    .active-sprint {
+      background-color: var(--bg-elevated-2);
+      border-left: 3px solid var(--accent-blue);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sprint-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sprint-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-blue-light);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .sprint-progress-val {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    .sprint-title {
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--text-white);
+    }
+
+    /* Progress bar */
+    .progress-bar-wrap {
+      width: 100%;
+      height: 6px;
+      background-color: var(--bg-elevated-3);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-blue), #38BDF8);
+      border-radius: var(--radius-pill);
+    }
+
+    /* AI Mentor Callout */
+    .ai-feedback-callout {
+      background-color: rgba(99, 102, 241, 0.08);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .ai-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--accent-indigo), #4F46E5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .ai-feedback-text {
+      font-size: 0.8rem;
+      color: #C7D2FE;
+      line-height: 1.45;
+    }
+
+    .ai-feedback-text strong {
+      color: #FFFFFF;
+    }
+
+    /* -------------------------------------------------------------
+       METRIC STRIP / STATS BAR
+       ------------------------------------------------------------- */
+    .stats-strip {
+      border-bottom: 1px solid var(--border-subtle);
+      background-color: var(--bg-elevated-1);
+      padding: 32px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-right: 16px;
+      border-right: 1px solid var(--border-subtle);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+
+    .stat-number {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--text-white);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .stat-number span.accent {
+      color: var(--accent-blue-light);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* -------------------------------------------------------------
+       SECTION STRUCTURE HELPERS
+       ------------------------------------------------------------- */
+    .section-wrap {
+      padding: 96px 0;
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: 56px;
+      max-width: 680px;
+    }
+
+    .section-header.center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-blue-light);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.2vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      color: var(--text-white);
+      margin-bottom: 14px;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* -------------------------------------------------------------
+       CAREER PATHS SECTION
+       ------------------------------------------------------------- */
+    .career-paths-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .career-card {
+      background-color: var(--bg-elevated-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 28px;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .career-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: transparent;
+      transition: background-color 0.25s ease;
+    }
+
+    .career-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--border-medium);
+    }
+
+    /* Card visual themes */
+    .career-card.theme-ai::before {
+      background: linear-gradient(90deg, var(--accent-indigo), #818CF8);
+    }
+    .career-card.theme-ai:hover {
+      border-color: rgba(99, 102, 241, 0.4);
+    }
+    .career-card.theme-ai .card-icon-box {
+      background: var(--accent-indigo-dim);
+      color: #818CF8;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    .career-card.theme-dev::before {
+      background: linear-gradient(90deg, var(--accent-blue), #38BDF8);
+    }
+    .career-card.theme-dev:hover {
+      border-color: rgba(37, 99, 235, 0.4);
+    }
+    .career-card.theme-dev .card-icon-box {
+      background: var(--accent-blue-dim);
+      color: #60A5FA;
+      border: 1px solid rgba(37, 99, 235, 0.3);
+    }
+
+    .career-card.theme-data::before {
+      background: linear-gradient(90deg, var(--accent-amber), #FCD34D);
+    }
+    .career-card.theme-data:hover {
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+    .career-card.theme-data .card-icon-box {
+      background: var(--accent-amber-dim);
+      color: #FBBF24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .career-card.theme-design::before {
+      background: linear-gradient(90deg, var(--accent-rose), #FB7185);
+    }
+    .career-card.theme-design:hover {
+      border-color: rgba(244, 63, 94, 0.4);
+    }
+    .career-card.theme-design .card-icon-box {
+      background: var(--accent-rose-dim);
+      color: #FB7185;
+      border: 1px solid rgba(244, 63, 94, 0.3);
+    }
+
+    .card-top {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .card-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-meta-badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background-color: var(--bg-elevated-2);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+    }
+
+    .card-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--text-white);
+      letter-spacing: -0.02em;
+    }
+
+    .card-description {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .card-skills-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .skills-header-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .career-skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .career-skill-chip {
+      font-size: 0.78rem;
+      font-weight: 500;
+      font-family: var(--font-mono);
+      background-color: var(--bg-elevated-2);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .market-demand-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .market-val {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+
+    .market-label {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    .card-action-link {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent-blue-light);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s ease;
+    }
+
+    .card-action-link:hover {
+      gap: 10px;
+      color: var(--text-white);
+    }
+
+    /* -------------------------------------------------------------
+       AI-POWERED LEARNING SECTION (Thoughtful Asymmetric Layout)
+       ------------------------------------------------------------- */
+    .learning-section {
+      background-color: var(--bg-elevated-1);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .learning-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .learning-benefits-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .benefit-item {
+      background-color: var(--bg-base);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .benefit-item:hover {
+      border-color: var(--border-medium);
+      background-color: var(--bg-elevated-2);
+    }
+
+    .benefit-item.active {
+      border-color: var(--accent-blue);
+      background-color: var(--bg-elevated-2);
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
+    }
+
+    .benefit-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .benefit-number {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent-blue-light);
+      background-color: var(--accent-blue-dim);
+      border: 1px solid rgba(37, 99, 235, 0.3);
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .benefit-item.active .benefit-number {
+      background-color: var(--accent-blue);
+      color: #fff;
+    }
+
+    .benefit-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+
+    .benefit-desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      padding-left: 44px;
+    }
+
+    /* Interactive Live Demonstration Panel on Right */
+    .learning-visual-card {
+      background-color: var(--bg-base);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .visual-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .visual-tag {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--accent-blue-light);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+    }
+
+    .visual-indicator {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      color: var(--accent-emerald);
+      font-family: var(--font-mono);
+    }
+
+    /* Benefit View 1: Personalised Roadmap */
+    .visual-content-pane {
+      display: none;
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    .visual-content-pane.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .schedule-sim-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .schedule-header-summary {
+      background-color: var(--bg-elevated-2);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .schedule-meta-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .schedule-meta-row strong {
+      color: var(--text-white);
+    }
+
+    .schedule-adjustment-note {
+      font-size: 0.78rem;
+      color: var(--accent-amber);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .weekly-bars-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .week-col {
+      background-color: var(--bg-elevated-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .week-col.highlighted {
+      border-color: var(--accent-blue);
+      background-color: var(--bg-elevated-2);
+    }
+
+    .week-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .week-hours {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+
+    .week-focus {
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      line-height: 1.3;
+    }
+
+    /* Benefit View 2: Skill Gap Discovery */
+    .gap-matrix {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .gap-row {
+      background-color: var(--bg-elevated-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .gap-skill-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-white);
+    }
+
+    .gap-badge {
+      font-size: 0.74rem;
+      font-family: var(--font-mono);
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+    }
+
+    .gap-badge.covered {
+      background-color: var(--accent-emerald-dim);
+      color: var(--accent-emerald);
+    }
+
+    .gap-badge.gap-critical {
+      background-color: var(--accent-rose-dim);
+      color: var(--accent-rose);
+    }
+
+    .gap-badge.gap-moderate {
+      background-color: var(--accent-amber-dim);
+      color: var(--accent-amber);
+    }
+
+    .ai-action-suggestion {
+      background-color: var(--bg-elevated-2);
+      border-left: 3px solid var(--accent-blue-light);
+      padding: 12px 14px;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Benefit View 3: Interview Preparation */
+    .interview-chat-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .chat-bubble {
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+
+    .chat-bubble.ai-interviewer {
+      background-color: var(--bg-elevated-2);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+    }
+
+    .chat-bubble.candidate-response {
+      background-color: rgba(37, 99, 235, 0.12);
+      border: 1px solid rgba(37, 99, 235, 0.25);
+      color: #93C5FD;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+    }
+
+    .interview-feedback-score {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      font-size: 0.78rem;
+      color: #6EE7B7;
+    }
+
+    /* -------------------------------------------------------------
+       SAMPLE LEARNING ROADMAP SECTION
+       ------------------------------------------------------------- */
+    .roadmap-section {
+      background-color: var(--bg-base);
+    }
+
+    .roadmap-summary-card {
+      background-color: var(--bg-elevated-1);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      padding: 24px 32px;
+      margin-bottom: 48px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .roadmap-meta-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .role-badge-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .role-main-text {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+
+    .level-chip {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      background-color: var(--bg-elevated-3);
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      color: var(--accent-blue-light);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .overall-stats-pill {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+
+    .overall-stats-pill strong {
+      color: var(--text-white);
+    }
+
+    .roadmap-progress-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .progress-labels-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+    }
+
+    .completion-rate-text {
+      color: var(--accent-blue-light);
+      font-weight: 700;
+    }
+
+    .progress-track-bg {
+      height: 8px;
+      width: 100%;
+      background-color: var(--bg-elevated-3);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+    }
+
+    .progress-track-val {
+      height: 100%;
+      width: 66%;
+      background: linear-gradient(90deg, var(--accent-blue), #38BDF8);
+      border-radius: var(--radius-pill);
+    }
+
+    /* Timeline Stepper */
+    .timeline-stepper {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      position: relative;
+    }
+
+    /* Timeline vertical connecting line */
+    .timeline-stepper::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      bottom: 36px;
+      left: 31px;
+      width: 2px;
+      background-color: var(--border-medium);
+      z-index: 1;
+    }
+
+    .roadmap-step-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .step-marker {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-md);
+      background-color: var(--bg-elevated-2);
+      border: 2px solid var(--border-medium);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+    }
+
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .step-state-icon {
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    /* Step Status Variants */
+    .roadmap-step-card.completed .step-marker {
+      background-color: rgba(16, 185, 129, 0.12);
+      border-color: var(--accent-emerald);
+      color: var(--accent-emerald);
+    }
+
+    .roadmap-step-card.in-progress .step-marker {
+      background-color: rgba(37, 99, 235, 0.15);
+      border-color: var(--accent-blue-light);
+      color: var(--accent-blue-light);
+      box-shadow: 0 0 16px rgba(37, 99, 235, 0.3);
+    }
+
+    .roadmap-step-card.upcoming .step-marker {
+      background-color: var(--bg-elevated-1);
+      border-color: var(--border-subtle);
+      color: var(--text-muted);
+    }
+
+    .step-content-box {
+      background-color: var(--bg-elevated-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color 0.2s ease;
+    }
+
+    .roadmap-step-card.in-progress .step-content-box {
+      border-color: rgba(37, 99, 235, 0.35);
+      background-color: var(--bg-elevated-2);
+    }
+
+    .step-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .step-status-chip {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .status-completed {
+      background-color: var(--accent-emerald-dim);
+      color: var(--accent-emerald);
+    }
+
+    .status-active {
+      background-color: var(--accent-blue-dim);
+      color: var(--accent-blue-light);
+    }
+
+    .status-pending {
+      background-color: var(--bg-elevated-3);
+      color: var(--text-muted);
+    }
+
+    .step-time-est {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .step-heading {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+
+    .step-description {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .step-artifacts-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .artifact-label {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .artifact-pill {
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-elevated-3);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    /* -------------------------------------------------------------
+       FINAL CALL TO ACTION SECTION
+       ------------------------------------------------------------- */
+    .final-cta-section {
+      padding: 104px 0;
+      position: relative;
+    }
+
+    .cta-card {
+      background: linear-gradient(135deg, var(--bg-elevated-2) 0%, #17243B 100%);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-xl);
+      padding: 64px 48px;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .cta-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: radial-gradient(circle at 50% -20%, rgba(37, 99, 235, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .cta-headline {
+      font-size: clamp(2.2rem, 3.8vw, 3.25rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-white);
+      line-height: 1.15;
+    }
+
+    .cta-supporting {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 580px;
+      line-height: 1.6;
+    }
+
+    .cta-action-area {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .cta-guarantees {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 16px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .guarantee-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .guarantee-icon {
+      color: var(--accent-emerald);
+    }
+
+    /* -------------------------------------------------------------
+       FOOTER
+       ------------------------------------------------------------- */
+    .site-footer {
+      background-color: #060910;
+      border-top: 1px solid var(--border-subtle);
+      padding: 64px 0 36px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-tagline {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 320px;
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-col-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-white);
+      font-family: var(--font-mono);
+    }
+
+    .footer-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links-list a {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+
+    .footer-links-list a:hover {
+      color: var(--text-white);
+    }
+
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--text-secondary);
+    }
+
+    /* -------------------------------------------------------------
+       ACCESSIBLE MODAL FOR "BUILD MY ROADMAP"
+       ------------------------------------------------------------- */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(5, 8, 14, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background-color: var(--bg-elevated-1);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-xl);
+      max-width: 520px;
+      width: 100%;
+      padding: 32px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      background-color: var(--bg-elevated-2);
+    }
+
+    .modal-close-btn:hover {
+      color: var(--text-white);
+    }
+
+    .modal-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--text-white);
+      margin-bottom: 6px;
+    }
+
+    .modal-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .modal-form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .modal-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .modal-select, .modal-input {
+      width: 100%;
+      background-color: var(--bg-elevated-2);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      color: var(--text-white);
+      font-family: inherit;
+      font-size: 0.94rem;
+    }
+
+    .modal-select:focus, .modal-input:focus {
+      outline: 2px solid var(--accent-blue-light);
+    }
+
+    /* -------------------------------------------------------------
+       RESPONSIVE DESIGN (TABLET & MOBILE)
+       ------------------------------------------------------------- */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .hero-content {
+        max-width: 640px;
+      }
+
+      .learning-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+
+      .stat-item {
+        border-right: none;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        height: 64px;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-elevated-1);
+        border-bottom: 1px solid var(--border-subtle);
+        flex-direction: column;
+        padding: 24px;
+        gap: 18px;
+        box-shadow: var(--shadow-lg);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+      }
+
+      .nav-actions .btn-nav {
+        display: none;
+      }
+
+      .career-paths-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-wrap {
+        padding: 64px 0;
+      }
+
+      .hero-section {
+        padding: 48px 0 64px;
+      }
+
+      .roadmap-step-card {
+        gap: 16px;
+      }
+
+      .timeline-stepper::before {
+        left: 23px;
+      }
+
+      .step-marker {
+        width: 48px;
+        height: 48px;
+      }
+
+      .step-num {
+        font-size: 0.65rem;
+      }
+
+      .step-state-icon {
+        font-size: 0.95rem;
+      }
+
+      .step-content-box {
+        padding: 18px 20px;
+      }
+
+      .cta-card {
+        padding: 40px 24px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .weekly-bars-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .hero-cta-group .btn {
+        width: 100%;
+      }
+
+      .cta-action-area {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .cta-action-area .btn {
+        width: 100%;
+      }
+
+      .target-role-block {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .readiness-gauge {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =============================================================
+       1. NAVIGATION BAR
+       ============================================================= -->
+  <header class="navbar" role="banner">
+    <div class="container">
+      <div class="navbar-inner">
+        <!-- Logo -->
+        <a href="#hero" class="brand-logo" aria-label="SkillRise AI Homepage">
+          <div class="brand-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 20V10"></path>
+              <path d="M12 20V4"></path>
+              <path d="M6 20v-6"></path>
+            </svg>
+          </div>
+          <span>SkillRise<span class="ai-tag">AI</span></span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="nav-links" id="navLinks" role="navigation" aria-label="Main menu">
+          <a href="#careers">Explore Careers</a>
+          <a href="#skills-highlight">Skills</a>
+          <a href="#ai-learning">How It Works</a>
+        </nav>
+
+        <!-- CTA & Mobile Trigger -->
+        <div class="nav-actions">
+          <a href="#sample-roadmap" class="btn btn-primary btn-nav">Start Your Journey</a>
+          
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- =============================================================
+         2. HERO SECTION
+         ============================================================= -->
+    <section class="hero-section" id="hero" aria-label="Introduction">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Hero Text Content -->
+          <div class="hero-content">
+            <div class="badge">
+              <span class="badge-dot" aria-hidden="true"></span>
+              Career Intelligence Engine v2.4
+            </div>
+
+            <h1 class="hero-title">
+              Your Future Career Starts With <span class="highlight">One Skill.</span>
+            </h1>
+
+            <p class="hero-description">
+              Discover your strengths, build in-demand skills, and follow a personalised career roadmap powered by AI. Designed for students, fresh graduates, and career builders.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#sample-roadmap" class="btn btn-primary btn-lg">
+                Build My Career Roadmap
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="#careers" class="btn btn-secondary btn-lg">
+                Explore Skills
+              </a>
+            </div>
+
+            <!-- Micro Proof Metric -->
+            <div class="hero-social-proof">
+              <div class="proof-avatars" aria-hidden="true">
+                <div class="avatar-circle">AC</div>
+                <div class="avatar-circle">RN</div>
+                <div class="avatar-circle">SL</div>
+              </div>
+              <p class="proof-text">
+                <strong>12,400+ graduates & early pros</strong> accelerated their career milestone this month.
+              </p>
+            </div>
+          </div>
+
+          <!-- Hero Product Preview UI -->
+          <div class="preview-card-wrapper" aria-label="Interactive Product Preview">
+            <div class="preview-card">
+              <!-- Window Chrome Header -->
+              <div class="preview-header">
+                <div class="window-controls" aria-hidden="true">
+                  <span class="control-dot"></span>
+                  <span class="control-dot"></span>
+                  <span class="control-dot"></span>
+                </div>
+                <span class="window-title">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 14 14"></polyline>
+                  </svg>
+                  SkillRise Copilot — Live Student Blueprint
+                </span>
+                <span class="preview-status">Active Plan</span>
+              </div>
+
+              <!-- Dashboard Body -->
+              <div class="preview-body">
+                <!-- Target Role Card -->
+                <div class="target-role-block">
+                  <div class="role-meta">
+                    <span class="role-label">Primary Career Target</span>
+                    <h3 class="role-title">Software Developer</h3>
+                    <span class="role-timeline">Pacing: 12 hrs/week • Target Offer: Q3</span>
+                  </div>
+                  <div class="readiness-gauge">
+                    <span class="readiness-number">68%</span>
+                    <span class="readiness-text">Role Readiness</span>
+                  </div>
+                </div>
+
+                <!-- Skill Competencies Status -->
+                <div class="skills-cluster">
+                  <span class="skills-cluster-label">Assessed Competencies (4 of 6 Unlocked)</span>
+                  <div class="skill-tags-row">
+                    <span class="skill-tag completed">✓ TypeScript & OOP</span>
+                    <span class="skill-tag completed">✓ Modular Frontend</span>
+                    <span class="skill-tag in-progress">⚡ PostgreSQL & Schemas (75%)</span>
+                    <span class="skill-tag upcoming">⏳ API Systems</span>
+                  </div>
+                </div>
+
+                <!-- Active Sprint / Next Steps -->
+                <div class="active-sprint">
+                  <div class="sprint-header">
+                    <span class="sprint-tag">Sprint 3 Milestone</span>
+                    <span class="sprint-progress-val">Step 3 of 4</span>
+                  </div>
+                  <h4 class="sprint-title">Relational Query Optimization & Indexing</h4>
+                  <div class="progress-bar-wrap">
+                    <div class="progress-bar-fill" style="width: 75%;" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+
+                <!-- AI Mentor Observation -->
+                <div class="ai-feedback-callout">
+                  <div class="ai-avatar" aria-hidden="true">AI</div>
+                  <div class="ai-feedback-text">
+                    <strong>AI Recommendation:</strong> Your schema design passed relational normalization checks. Completing the indexing challenge will boost your backend readiness by +12%.
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================
+         STATS / IMPACT STRIP
+         ============================================================= -->
+    <section class="stats-strip" aria-label="Platform Statistics">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">12,400<span class="accent">+</span></span>
+            <span class="stat-label">Personalised roadmaps created for early tech careers</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">94<span class="accent">%</span></span>
+            <span class="stat-label">Learners report clarity in skill prioritization within 7 days</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">3.2<span class="accent">x</span></span>
+            <span class="stat-label">Faster progression compared to self-directed unstructured study</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">45<span class="accent">+</span></span>
+            <span class="stat-label">Curated industry tracks aligned with live employer demand</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================
+         3. CAREER PATHS SECTION
+         ============================================================= -->
+    <section class="section-wrap" id="careers" aria-labelledby="careers-heading">
+      <div id="skills-highlight" style="position: absolute; top: -60px;"></div>
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Find Your Direction</span>
+          <h2 class="section-title" id="careers-heading">Find Your Direction.</h2>
+          <p class="section-subtitle">
+            Explore carefully structured career pathways built from real hiring requirements, continuously updated to reflect what modern engineering and design teams actually look for.
+          </p>
+        </div>
+
+        <div class="career-paths-grid">
+          
+          <!-- Card 1: AI & Machine Learning -->
+          <article class="career-card theme-ai" aria-labelledby="track-ai-title">
+            <div class="card-top">
+              <div class="card-header-row">
+                <div class="card-icon-box" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                  </svg>
+                </div>
+                <span class="card-meta-badge">Surging Demand</span>
+              </div>
+              <h3 class="card-title" id="track-ai-title">AI & Machine Learning</h3>
+              <p class="card-description">
+                Build predictive models, evaluate foundation LLMs, implement Retrieval-Augmented Generation (RAG), and deploy autonomous agent workflows at production scale.
+              </p>
+            </div>
+
+            <div class="card-skills-section">
+              <span class="skills-header-label">High-Impact Skills</span>
+              <div class="career-skills-tags">
+                <span class="career-skill-chip">Python & PyTorch</span>
+                <span class="career-skill-chip">Vector DBs (Chroma/Pinecone)</span>
+                <span class="career-skill-chip">LLM Fine-Tuning</span>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="market-demand-stat">
+                <span class="market-val">+34% YoY</span>
+                <span class="market-label">Hiring Growth</span>
+              </div>
+              <a href="#sample-roadmap" class="card-action-link" aria-label="Explore AI & Machine Learning Roadmap">
+                Explore Track
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 2: Software Development -->
+          <article class="career-card theme-dev" aria-labelledby="track-dev-title">
+            <div class="card-top">
+              <div class="card-header-row">
+                <div class="card-icon-box" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                </div>
+                <span class="card-meta-badge">Highest Openings</span>
+              </div>
+              <h3 class="card-title" id="track-dev-title">Software Development</h3>
+              <p class="card-description">
+                Architect robust full-stack applications, master relational data modeling, design resilient APIs, and navigate professional CI/CD engineering workflows.
+              </p>
+            </div>
+
+            <div class="card-skills-section">
+              <span class="skills-header-label">High-Impact Skills</span>
+              <div class="career-skills-tags">
+                <span class="career-skill-chip">TypeScript & Node</span>
+                <span class="career-skill-chip">PostgreSQL & Databases</span>
+                <span class="career-skill-chip">REST & Distributed APIs</span>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="market-demand-stat">
+                <span class="market-val">140k+ Jobs</span>
+                <span class="market-label">Global Listings</span>
+              </div>
+              <a href="#sample-roadmap" class="card-action-link" aria-label="Explore Software Development Roadmap">
+                Explore Track
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 3: Data Analytics -->
+          <article class="career-card theme-data" aria-labelledby="track-data-title">
+            <div class="card-top">
+              <div class="card-header-row">
+                <div class="card-icon-box" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                  </svg>
+                </div>
+                <span class="card-meta-badge">Executive Core</span>
+              </div>
+              <h3 class="card-title" id="track-data-title">Data Analytics</h3>
+              <p class="card-description">
+                Convert messy business event streams into decision-ready executive intelligence, automated KPI dashboards, and statistically grounded experimentation frameworks.
+              </p>
+            </div>
+
+            <div class="card-skills-section">
+              <span class="skills-header-label">High-Impact Skills</span>
+              <div class="career-skills-tags">
+                <span class="career-skill-chip">Advanced SQL & Windowing</span>
+                <span class="career-skill-chip">Python (Pandas / Seaborn)</span>
+                <span class="career-skill-chip">A/B Testing & BI</span>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="market-demand-stat">
+                <span class="market-val">Essential</span>
+                <span class="market-label">In 92% of Teams</span>
+              </div>
+              <a href="#sample-roadmap" class="card-action-link" aria-label="Explore Data Analytics Roadmap">
+                Explore Track
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 4: UI/UX Design -->
+          <article class="career-card theme-design" aria-labelledby="track-design-title">
+            <div class="card-top">
+              <div class="card-header-row">
+                <div class="card-icon-box" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="m4.93 4.93 4.24 4.24"></path>
+                    <path d="m14.83 9.17 4.24-4.24"></path>
+                    <path d="m14.83 14.83 4.24 4.24"></path>
+                    <path d="m9.17 14.83-4.24 4.24"></path>
+                  </svg>
+                </div>
+                <span class="card-meta-badge">Product Essential</span>
+              </div>
+              <h3 class="card-title" id="track-design-title">UI/UX Design</h3>
+              <p class="card-description">
+                Design intuitive software interfaces, build comprehensive design token systems, conduct qualitative user research, and build interactive Figma prototypes.
+              </p>
+            </div>
+
+            <div class="card-skills-section">
+              <span class="skills-header-label">High-Impact Skills</span>
+              <div class="career-skills-tags">
+                <span class="career-skill-chip">Figma Design Systems</span>
+                <span class="career-skill-chip">User Research & Usability</span>
+                <span class="career-skill-chip">Interaction Prototyping</span>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="market-demand-stat">
+                <span class="market-val">High Impact</span>
+                <span class="market-label">Cross-functional Core</span>
+              </div>
+              <a href="#sample-roadmap" class="card-action-link" aria-label="Explore UI/UX Design Roadmap">
+                Explore Track
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================
+         4. AI-POWERED LEARNING SECTION
+         ============================================================= -->
+    <section class="section-wrap learning-section" id="ai-learning" aria-labelledby="learning-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Smart Career Engineering</span>
+          <h2 class="section-title" id="learning-heading">A Learning Plan That Fits You.</h2>
+          <p class="section-subtitle">
+            Most courses treat every student identically with rigid 60-hour video playlists. SkillRise AI continuously analyzes your code submissions, schedule constraints, and skill gaps to build a plan around your life.
+          </p>
+        </div>
+
+        <div class="learning-grid">
+          
+          <!-- Benefit Selector List (Left Side) -->
+          <div class="learning-benefits-list" role="tablist" aria-label="Learning Benefits">
+            
+            <!-- Benefit 1 -->
+            <div class="benefit-item active" id="tab-btn-1" role="tab" tabindex="0" aria-selected="true" aria-controls="pane-1" onclick="switchBenefit(1)">
+              <div class="benefit-header">
+                <div class="benefit-number">01</div>
+                <h3 class="benefit-title">Personalised career roadmaps</h3>
+              </div>
+              <p class="benefit-desc">
+                Your schedule isn’t static, so your learning plan shouldn't be either. Our adaptive engine dynamically reschedules milestones around your exams, working hours, and learning speed without letting you drift off track.
+              </p>
+            </div>
+
+            <!-- Benefit 2 -->
+            <div class="benefit-item" id="tab-btn-2" role="tab" tabindex="0" aria-selected="false" aria-controls="pane-2" onclick="switchBenefit(2)">
+              <div class="benefit-header">
+                <div class="benefit-number">02</div>
+                <h3 class="benefit-title">Skill gap discovery</h3>
+              </div>
+              <p class="benefit-desc">
+                Stop guessing why applications aren't landing. Our diagnostic tool maps your practical project code against current job requirements, pinpointing the exact 2 or 3 missing competencies holding you back.
+              </p>
+            </div>
+
+            <!-- Benefit 3 -->
+            <div class="benefit-item" id="tab-btn-3" role="tab" tabindex="0" aria-selected="false" aria-controls="pane-3" onclick="switchBenefit(3)">
+              <div class="benefit-header">
+                <div class="benefit-number">03</div>
+                <h3 class="benefit-title">Interview preparation</h3>
+              </div>
+              <p class="benefit-desc">
+                Train with an AI mock interviewer calibrated to tech interview rubrics. Practice answering technical architecture questions, edge cases, and behavioral STAR questions with immediate grading on clarity and depth.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Interactive Visualization Card (Right Side) -->
+          <div class="learning-visual-card" aria-live="polite">
+            <div class="visual-top-bar">
+              <span class="visual-tag" id="visual-panel-title">Dynamic Plan Calibration Engine</span>
+              <div class="visual-indicator">
+                <span class="badge-dot" aria-hidden="true"></span>
+                <span>Active Diagnostic</span>
+              </div>
+            </div>
+
+            <!-- Visual Content Pane 1: Personalised Roadmaps -->
+            <div class="visual-content-pane active" id="pane-1" role="tabpanel" aria-labelledby="tab-btn-1">
+              <div class="schedule-sim-grid">
+                <div class="schedule-header-summary">
+                  <div class="schedule-meta-row">
+                    <span>Student Profile: <strong>College Senior (Midterm Week)</strong></span>
+                    <span>Status: <strong>Adjusted</strong></span>
+                  </div>
+                  <div class="schedule-meta-row">
+                    <span>Target Role: <strong>Software Developer</strong></span>
+                    <span>Target Date: <strong>November 15</strong></span>
+                  </div>
+                  <div class="schedule-adjustment-note">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    AI Adjustment: Weekly workload reduced by 40% for exam window without delaying final job target.
+                  </div>
+                </div>
+
+                <div class="weekly-bars-container">
+                  <div class="week-col">
+                    <span class="week-label">Week 06</span>
+                    <span class="week-hours">15 hrs</span>
+                    <span class="week-focus">DOM & Events</span>
+                  </div>
+                  <div class="week-col highlighted">
+                    <span class="week-label">Week 07 (Now)</span>
+                    <span class="week-hours">8 hrs</span>
+                    <span class="week-focus">Micro Sprint</span>
+                  </div>
+                  <div class="week-col">
+                    <span class="week-label">Week 08</span>
+                    <span class="week-hours">16 hrs</span>
+                    <span class="week-focus">PostgreSQL</span>
+                  </div>
+                  <div class="week-col">
+                    <span class="week-label">Week 09</span>
+                    <span class="week-hours">14 hrs</span>
+                    <span class="week-focus">Full Stack App</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Visual Content Pane 2: Skill Gap Discovery -->
+            <div class="visual-content-pane" id="pane-2" role="tabpanel" aria-labelledby="tab-btn-2">
+              <div class="gap-matrix">
+                <div class="gap-row">
+                  <div>
+                    <div class="gap-skill-name">JavaScript & Async Logic</div>
+                    <small style="color: var(--text-muted); font-size: 0.72rem;">Tested on 4 async promise projects</small>
+                  </div>
+                  <span class="gap-badge covered">Proficient (91%)</span>
+                </div>
+
+                <div class="gap-row">
+                  <div>
+                    <div class="gap-skill-name">Database Indexing & Performance</div>
+                    <small style="color: var(--text-muted); font-size: 0.72rem;">Missing in 2 recent portfolio repos</small>
+                  </div>
+                  <span class="gap-badge gap-critical">Critical Gap</span>
+                </div>
+
+                <div class="gap-row">
+                  <div>
+                    <div class="gap-skill-name">API Authentication (JWT/OAuth)</div>
+                    <small style="color: var(--text-muted); font-size: 0.72rem;">Theoretical understanding present</small>
+                  </div>
+                  <span class="gap-badge gap-moderate">Partial Gap</span>
+                </div>
+
+                <div class="ai-action-suggestion">
+                  <strong>AI Intervention:</strong> We injected a focused 90-minute hands-on sprint on <em>"PostgreSQL B-Tree Indexing and Query Plans"</em> directly into Step 3 to satisfy 84% of entry-level job filters.
+                </div>
+              </div>
+            </div>
+
+            <!-- Visual Content Pane 3: Interview Preparation -->
+            <div class="visual-content-pane" id="pane-3" role="tabpanel" aria-labelledby="tab-btn-3">
+              <div class="interview-chat-wrap">
+                <div class="chat-bubble ai-interviewer">
+                  <strong>AI Interviewer:</strong> "How would you handle race conditions when two users simultaneously attempt to reserve the last ticket in a Postgres database?"
+                </div>
+
+                <div class="chat-bubble candidate-response">
+                  &gt; "I would use a transaction with `SELECT ... FOR UPDATE` row-level locking or an optimistic concurrency token to reject dirty reads."
+                </div>
+
+                <div class="interview-feedback-score">
+                  <span><strong>AI Rubric Score:</strong> 9.4 / 10</span>
+                  <span>Accuracy: High • Communication: Concise</span>
+                </div>
+
+                <div class="ai-action-suggestion" style="margin-top: 4px;">
+                  <strong>Mentor Note:</strong> Strong architectural response! Next time, mention explicit retry backoff strategies for rejected requests.
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================
+         5. SAMPLE LEARNING ROADMAP SECTION
+         ============================================================= -->
+    <section class="section-wrap roadmap-section" id="sample-roadmap" aria-labelledby="roadmap-heading">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-eyebrow">Measurable Progression</span>
+          <h2 class="section-title" id="roadmap-heading">Small Steps. Real Progress.</h2>
+          <p class="section-subtitle">
+            Here is an authentic look at how SkillRise AI structures a zero-to-offer journey for someone pursuing a Software Developer role. Each milestone is backed by concrete artifacts and assessments.
+          </p>
+        </div>
+
+        <!-- Global Progress Summary Bar -->
+        <div class="roadmap-summary-card">
+          <div class="roadmap-meta-header">
+            <div class="role-badge-title">
+              <span class="role-main-text">Track: Software Developer</span>
+              <span class="level-chip">Level 1: Associate Engineer</span>
+            </div>
+            <div class="overall-stats-pill">
+              <span>Overall Progress: <strong>66% Complete</strong></span>
+              <span>Estimated Remaining: <strong>5 Weeks</strong></span>
+            </div>
+          </div>
+
+          <div class="roadmap-progress-container">
+            <div class="progress-labels-row">
+              <span>Step 3 of 4 in progress</span>
+              <span class="completion-rate-text">66% Completed</span>
+            </div>
+            <div class="progress-track-bg" aria-hidden="true">
+              <div class="progress-track-val" role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Step Interactive Timeline -->
+        <div class="timeline-stepper">
+          
+          <!-- Step 1: Fundamentals -->
+          <article class="roadmap-step-card completed" aria-labelledby="step-1-title">
+            <div class="step-marker" aria-hidden="true">
+              <span class="step-num">Step</span>
+              <span class="step-state-icon">✓</span>
+            </div>
+            <div class="step-content-box">
+              <div class="step-meta-row">
+                <span class="step-status-chip status-completed">Completed</span>
+                <span class="step-time-est">Weeks 1 – 3 • 42 hrs logged</span>
+              </div>
+              <h3 class="step-heading" id="step-1-title">1. Master programming fundamentals</h3>
+              <p class="step-description">
+                Establish deep mastery over memory structures, primitive vs reference types, object-oriented concepts, asynchronous execution loops, and algorithm complexity (Big-O analysis).
+              </p>
+              <div class="step-artifacts-row">
+                <span class="artifact-label">Verified Deliverables:</span>
+                <span class="artifact-pill">25 Algorithm Challenges Passed</span>
+                <span class="artifact-pill">Diagnostic Score: 94/100</span>
+                <span class="artifact-pill">Clean Git Hygiene Badge</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Step 2: Build Practical Projects -->
+          <article class="roadmap-step-card completed" aria-labelledby="step-2-title">
+            <div class="step-marker" aria-hidden="true">
+              <span class="step-num">Step</span>
+              <span class="step-state-icon">✓</span>
+            </div>
+            <div class="step-content-box">
+              <div class="step-meta-row">
+                <span class="step-status-chip status-completed">Completed</span>
+                <span class="step-time-est">Weeks 4 – 6 • 38 hrs logged</span>
+              </div>
+              <h3 class="step-heading" id="step-2-title">2. Build practical projects</h3>
+              <p class="step-description">
+                Construct responsive, accessible web applications from architectural blueprints. Focus on state container patterns, error boundaries, typed component contracts, and component unit testing.
+              </p>
+              <div class="step-artifacts-row">
+                <span class="artifact-label">Verified Deliverables:</span>
+                <span class="artifact-pill">Production Kanban Application</span>
+                <span class="artifact-pill">Automated Test Suite (Jest)</span>
+                <span class="artifact-pill">Lighthouse 98 Performance</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Step 3: Databases and APIs (CURRENT IN PROGRESS) -->
+          <article class="roadmap-step-card in-progress" aria-labelledby="step-3-title">
+            <div class="step-marker" aria-hidden="true">
+              <span class="step-num">Step</span>
+              <span class="step-state-icon">03</span>
+            </div>
+            <div class="step-content-box">
+              <div class="step-meta-row">
+                <span class="step-status-chip status-active">Currently Active • 65% Done</span>
+                <span class="step-time-est">Weeks 7 – 9 • 24 of 36 hrs</span>
+              </div>
+              <h3 class="step-heading" id="step-3-title">3. Learn databases and APIs</h3>
+              <p class="step-description">
+                Architect relational schemas with PostgreSQL, write complex multi-table JOINs, enforce data integrity constraints, construct RESTful endpoints with input validation, and implement secure JWT authentication.
+              </p>
+              <div class="step-artifacts-row">
+                <span class="artifact-label">Current Deliverables:</span>
+                <span class="artifact-pill">Normalized E-Commerce Schema (Passed)</span>
+                <span class="artifact-pill">Index Benchmark Drill (In Progress)</span>
+                <span class="artifact-pill">RESTful Auth Gateway</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Step 4: Technical Interview Prep -->
+          <article class="roadmap-step-card upcoming" aria-labelledby="step-4-title">
+            <div class="step-marker" aria-hidden="true">
+              <span class="step-num">Step</span>
+              <span class="step-state-icon">04</span>
+            </div>
+            <div class="step-content-box">
+              <div class="step-meta-row">
+                <span class="step-status-chip status-pending">Upcoming</span>
+                <span class="step-time-est">Weeks 10 – 12 • 30 hrs planned</span>
+              </div>
+              <h3 class="step-heading" id="step-4-title">4. Prepare for technical interviews</h3>
+              <p class="step-description">
+                Simulate live employer interviews under timed pressure. Polish behavioral storytelling with the STAR method, conduct whiteboarding sessions on system design basics, and optimize your resume for employer ATS filters.
+              </p>
+              <div class="step-artifacts-row">
+                <span class="artifact-label">Planned Deliverables:</span>
+                <span class="artifact-pill">5 AI Mock Interviews</span>
+                <span class="artifact-pill">ATS-Optimized Engineering Resume</span>
+                <span class="artifact-pill">Verified GitHub Portfolio</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =============================================================
+         6. FINAL CALL TO ACTION SECTION
+         ============================================================= -->
+    <section class="final-cta-section" id="get-started" aria-labelledby="cta-heading">
+      <div class="container">
+        <div class="cta-card">
+          <div class="cta-content">
+            <span class="badge" style="background-color: rgba(37, 99, 235, 0.15); border-color: rgba(37, 99, 235, 0.3); color: #93C5FD;">
+              Ready for clarity?
+            </span>
+
+            <h2 class="cta-headline" id="cta-heading">
+              Stop Guessing. Start Growing.
+            </h2>
+
+            <p class="cta-supporting">
+              Your next opportunity begins with a clear plan. Let our AI career engine diagnose your existing strengths and generate your step-by-step roadmap in under three minutes.
+            </p>
+
+            <div class="cta-action-area">
+              <button class="btn btn-primary btn-lg" onclick="openRoadmapModal()">
+                Build My Roadmap
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+              <a href="#careers" class="btn btn-secondary btn-lg">
+                Explore All Tracks
+              </a>
+            </div>
+
+            <div class="cta-guarantees">
+              <div class="guarantee-item">
+                <span class="guarantee-icon" aria-hidden="true">✓</span>
+                <span>Free 5-minute initial diagnostic</span>
+              </div>
+              <div class="guarantee-item">
+                <span class="guarantee-icon" aria-hidden="true">✓</span>
+                <span>Instant personalized roadmap</span>
+              </div>
+              <div class="guarantee-item">
+                <span class="guarantee-icon" aria-hidden="true">✓</span>
+                <span>No credit card required</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =============================================================
+       7. FOOTER
+       ============================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Brand Description -->
+        <div class="footer-brand">
+          <a href="#hero" class="brand-logo" aria-label="SkillRise AI Homepage">
+            <div class="brand-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 20V10"></path>
+                <path d="M12 20V4"></path>
+                <path d="M6 20v-6"></path>
+              </svg>
+            </div>
+            <span>SkillRise<span class="ai-tag">AI</span></span>
+          </a>
+          <p class="footer-tagline">
+            Empowering students, fresh graduates, and career changers to build job-ready skills with transparent, AI-calibrated career roadmaps.
+          </p>
+        </div>
+
+        <!-- Navigation Links: Tracks -->
+        <div class="footer-col">
+          <span class="footer-col-title">Career Tracks</span>
+          <div class="footer-links-list">
+            <a href="#careers">AI & Machine Learning</a>
+            <a href="#careers">Software Development</a>
+            <a href="#careers">Data Analytics</a>
+            <a href="#careers">UI/UX Design</a>
+          </div>
+        </div>
+
+        <!-- Navigation Links: Platform -->
+        <div class="footer-col">
+          <span class="footer-col-title">Platform</span>
+          <div class="footer-links-list">
+            <a href="#ai-learning">Personalised Roadmaps</a>
+            <a href="#ai-learning">Skill Gap Discovery</a>
+            <a href="#ai-learning">Interview Preparation</a>
+            <a href="#sample-roadmap">Sample Developer Path</a>
+          </div>
+        </div>
+
+        <!-- Navigation Links: Company & Trust -->
+        <div class="footer-col">
+          <span class="footer-col-title">Company</span>
+          <div class="footer-links-list">
+            <a href="#hero">About SkillRise AI</a>
+            <a href="#careers">Hiring Partner Network</a>
+            <a href="#get-started">Early Access Program</a>
+            <a href="#get-started">Student Scholarship</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <span>&copy; 2026 SkillRise AI Inc. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#hero">Privacy Policy</a>
+          <a href="#hero">Terms of Service</a>
+          <a href="#hero">Cookie Preferences</a>
+          <a href="#hero">Security Disclosure</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =============================================================
+       INTERACTIVE ONBOARDING MODAL
+       ============================================================= -->
+  <div class="modal-overlay" id="roadmapModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeRoadmapModal()" aria-label="Close dialog">&times;</button>
+      
+      <h3 class="modal-title" id="modalTitle">Build Your Career Roadmap</h3>
+      <p class="modal-subtitle">Tell us what you want to achieve, and our AI will build your tailored curriculum.</p>
+
+      <form id="roadmapForm" onsubmit="handleRoadmapSubmit(event)">
+        <div class="modal-form-group">
+          <label class="modal-label" for="targetRole">Target Career Path</label>
+          <select class="modal-select" id="targetRole" required>
+            <option value="sde">Software Development (Full-Stack / Backend)</option>
+            <option value="aiml">AI & Machine Learning Engineering</option>
+            <option value="data">Data Analytics & Business Intelligence</option>
+            <option value="design">UI/UX Product Design</option>
+          </select>
+        </div>
+
+        <div class="modal-form-group">
+          <label class="modal-label" for="weeklyHours">Available Weekly Study Hours</label>
+          <select class="modal-select" id="weeklyHours" required>
+            <option value="5-10">5 – 10 hours / week (Paced)</option>
+            <option value="10-20" selected>10 – 20 hours / week (Balanced)</option>
+            <option value="20+">20+ hours / week (Accelerated Bootcamp)</option>
+          </select>
+        </div>
+
+        <div class="modal-form-group">
+          <label class="modal-label" for="experienceLevel">Current Experience Level</label>
+          <select class="modal-select" id="experienceLevel" required>
+            <option value="beginner">Beginner / Student (Starting from scratch)</option>
+            <option value="intermediate">Self-Taught / Graduate (Some projects built)</option>
+            <option value="switcher">Career Switcher (Transitioning into tech)</option>
+          </select>
+        </div>
+
+        <div style="margin-top: 24px;">
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px;">
+            Generate My Custom Roadmap
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =============================================================
+       LIGHTWEIGHT CLIENT INTERACTIONS SCRIPT
+       ============================================================= -->
+  <script>
+    // Mobile navigation toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    if (mobileMenuBtn && navLinks) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+        mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+        navLinks.classList.toggle('open');
+      });
+
+      // Close menu when clicking any nav link
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // AI-Powered Learning Section Tab Switcher
+    function switchBenefit(benefitIndex) {
+      const titles = [
+        "Dynamic Plan Calibration Engine",
+        "Live Skill Gap Diagnostic Matrix",
+        "Simulated AI Technical Interviewer"
+      ];
+
+      // Update active tabs
+      for (let i = 1; i <= 3; i++) {
+        const tab = document.getElementById(`tab-btn-${i}`);
+        const pane = document.getElementById(`pane-${i}`);
+        if (tab && pane) {
+          if (i === benefitIndex) {
+            tab.classList.add('active');
+            tab.setAttribute('aria-selected', 'true');
+            pane.classList.add('active');
+          } else {
+            tab.classList.remove('active');
+            tab.setAttribute('aria-selected', 'false');
+            pane.classList.remove('active');
+          }
+        }
+      }
+
+      // Update top title in visual panel
+      const visualTitle = document.getElementById('visual-panel-title');
+      if (visualTitle) {
+        visualTitle.textContent = titles[benefitIndex - 1];
+      }
+    }
+
+    // Modal logic for "Build My Roadmap"
+    function openRoadmapModal() {
+      const modal = document.getElementById('roadmapModal');
+      if (modal) {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeRoadmapModal() {
+      const modal = document.getElementById('roadmapModal');
+      if (modal) {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Close modal on Escape key or outside click
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeRoadmapModal();
+    });
+
+    const modalOverlay = document.getElementById('roadmapModal');
+    if (modalOverlay) {
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) closeRoadmapModal();
+      });
+    }
+
+    function handleRoadmapSubmit(e) {
+      e.preventDefault();
+      closeRoadmapModal();
+      // Smoothly scroll to the roadmap section
+      const roadmapSection = document.getElementById('sample-roadmap');
+      if (roadmapSection) {
+        roadmapSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+</html>
