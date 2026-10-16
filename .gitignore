@@ -1,0 +1,15 @@
+# Large media files
+*.mp4
+*.zip
+*.png
+*.jpg
+*.jpeg
+index*.html
+
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
