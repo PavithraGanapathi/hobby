@@ -3,7 +3,8 @@
 VAISE is a standalone, lightweight, and gamified Officer Intelligence Rating (OIR) Assessment Web Application built with Python and Streamlit.
 
 ## ✨ Features
-- **20 Medium-Difficulty Reasoning Questions:** Balanced mix of verbal reasoning, series completion, coding-decoding, and spatial aptitude.
+- **Dedicated Topic Mastery (Coding & Decoding PYQs):** 20 authentic previous year asked questions covering forward/backward shifts, reverse pair inversion, digital roots, symbol mapping, and word-length formulas.
+- **Comprehensive Mixed OIR Set:** 20 medium-difficulty questions covering verbal reasoning, series completion, clock angles, cube nets, and spatial aptitude.
 - **Full-Screen Chocolate Shower 🍫:** Custom animated cascade of falling chocolates and candies for correct answers.
 - **Audio Sound Effects 🔊:** Native Web Audio API and Speech Synthesis ("Hooray!" victory fanfare for correct, "Ohh!" slide for incorrect).
 - **Responsive 5×4 Question Tracker:** Sleek square indicator tiles tracking answered and active questions.

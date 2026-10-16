@@ -642,8 +642,8 @@ INCORRECT_FEEDBACK_POOL = [
 # ==============================================================================
 # 5. QUESTION BANK (Exactly 20 Medium-Difficulty Questions)
 # ==============================================================================
-def get_question_bank():
-    """Returns exactly 20 medium-difficulty reasoning questions."""
+def get_mixed_oir_bank():
+    """Returns exactly 20 medium-difficulty reasoning questions (Comprehensive Mixed Set)."""
     return [
         {
             "id": 1,
@@ -946,13 +946,314 @@ Position 2:   [Top: 1] | [Front: 3] | [Right: 5]""",
     ]
 
 
+def get_coding_decoding_pyq_bank():
+    """
+    Returns exactly 20 authentic Previous Year Questions (PYQs) from SSB OIR / AFCAT / CDS
+    on the single most mandatory and highest-weightage topic: Coding & Decoding.
+    """
+    return [
+        {
+            "id": 1,
+            "category": "Coding & Decoding (Forward Letter Shift)",
+            "question": "In a certain code language, if **MADRAS** is coded as **NBESBT**, how will **BOMBAY** be coded in that same system?",
+            "visual": "M(+1)=N, A(+1)=B, D(+1)=E, R(+1)=S, A(+1)=B, S(+1)=T",
+            "options": [
+                "A) CPNCBZ",
+                "B) CPOCBZ",
+                "C) CQOCBZ",
+                "D) BQNCBZ"
+            ],
+            "answer": "A) CPNCBZ",
+            "explanation": "Each letter in the word is shifted forward by +1 alphabetical position:\n• B (+1) = C\n• O (+1) = P\n• M (+1) = N\n• B (+1) = C\n• A (+1) = B\n• Y (+1) = Z\nCombining these yields **CPNCBZ**."
+        },
+        {
+            "id": 2,
+            "category": "Coding & Decoding (Constant Forward Shift)",
+            "question": "If **TEACHER** is written as **VGCEJGT** in a code language, how will **CHILDREN** be coded under the exact same rule?",
+            "visual": "T(+2)=V, E(+2)=G, A(+2)=C, C(+2)=E, H(+2)=J, E(+2)=G, R(+2)=T",
+            "options": [
+                "A) EJKNFTGP",
+                "B) EJKNEGHP",
+                "C) EJKNFUHP",
+                "D) EJKNFTGO"
+            ],
+            "answer": "A) EJKNFTGP",
+            "explanation": "Every letter moves forward by +2 alphabetical steps:\n• C (+2) = E\n• H (+2) = J\n• I (+2) = K\n• L (+2) = N\n• D (+2) = F\n• R (+2) = T\n• E (+2) = G\n• N (+2) = P\nResult = **EJKNFTGP**."
+        },
+        {
+            "id": 3,
+            "category": "Coding & Decoding (Reverse Shift / Decryption)",
+            "question": "If in a secret transmission, **COVET** is encoded as **FRYHW**, which original plaintext word was encoded to produce **SHDUO**?",
+            "visual": "Encoding rule: +3 forward  |  Decoding rule: -3 backward",
+            "options": [
+                "A) PEARL",
+                "B) REPAY",
+                "C) PEAKY",
+                "D) STARE"
+            ],
+            "answer": "A) PEARL",
+            "explanation": "Forward coding rule adds +3 to each letter (C+3=F, O+3=R, V+3=Y, E+3=H, T+3=W).\nTo decode SHDUO back to the original word, subtract 3 (-3) from each letter:\n• S (19) - 3 = 16 (P)\n• H (8) - 3 = 5 (E)\n• D (4) - 3 = 1 (A)\n• U (21) - 3 = 18 (R)\n• O (15) - 3 = 12 (L)\nThe original word is **PEARL**."
+        },
+        {
+            "id": 4,
+            "category": "Coding & Decoding (Reverse Sequence Shift)",
+            "question": "In a code language, **MONKEY** is written as **XDJMNL**. How will **TIGER** be coded in that same language?",
+            "visual": "Last to first with -1: Y(-1)=X, E(-1)=D, K(-1)=J, N(-1)=M, O(-1)=N, M(-1)=L",
+            "options": [
+                "A) QDFHS",
+                "B) SDFHQ",
+                "C) SHFDQ",
+                "D) UJHFS"
+            ],
+            "answer": "A) QDFHS",
+            "explanation": "The pattern reads the original word in reverse order from the last letter to the first, subtracting 1 (-1) from each letter:\n• R (-1) = Q\n• E (-1) = D\n• G (-1) = F\n• I (-1) = H\n• T (-1) = S\nCombining from the last to first gives **QDFHS**."
+        },
+        {
+            "id": 5,
+            "category": "Coding & Decoding (Sectional Inversion)",
+            "question": "If **SYSTEM** is coded as **SYSMET** and **NEARER** is coded as **AENRER**, how will the word **FRACTION** be coded?",
+            "visual": "FRAC | TION  -->  Reverse 1st half | Reverse 2nd half",
+            "options": [
+                "A) CARFNOIT",
+                "B) CRAFNOIT",
+                "C) NOITCARF",
+                "D) CARFTION"
+            ],
+            "answer": "A) CARFNOIT",
+            "explanation": "The word is divided into two equal halves of 4 letters each:\n• First half 'FRAC' reversed becomes 'CARF'.\n• Second half 'TION' reversed becomes 'NOIT'.\nMerging both halves results in **CARFNOIT**."
+        },
+        {
+            "id": 6,
+            "category": "Coding & Decoding (Reverse Alphabet Pairs)",
+            "question": "If **CERTAIN** is coded as **XVIGZRM** (where A↔Z, B↔Y, C↔X...), how will the word **REQUIRED** be coded?",
+            "visual": "Opposite Pair Rule: Letter Rank + Opposite Rank = 27",
+            "options": [
+                "A) IVJFRIVW",
+                "B) IVJFQIVW",
+                "C) JVIFRIVW",
+                "D) IVJFSIUW"
+            ],
+            "answer": "A) IVJFRIVW",
+            "explanation": "Each letter is replaced by its complementary opposite letter from the alphabet (positions sum to 27):\n• R (18) ↔ I (9)\n• E (5) ↔ V (22)\n• Q (17) ↔ J (10)\n• U (21) ↔ F (6)\n• I (9) ↔ R (18)\n• R (18) ↔ I (9)\n• E (5) ↔ V (22)\n• D (4) ↔ W (23)\nResult = **IVJFRIVW**."
+        },
+        {
+            "id": 7,
+            "category": "Coding & Decoding (Direct Digit Substitution)",
+            "question": "If **DELHI** is coded as **73541** and **CALCUTTA** is coded as **82589662**, how will **CALICUT** be written in that code?",
+            "visual": "C=8, A=2, L=5, I=1, U=9, T=6",
+            "options": [
+                "A) 8251896",
+                "B) 8251869",
+                "C) 8258196",
+                "D) 8521896"
+            ],
+            "answer": "A) 8251896",
+            "explanation": "Each letter directly maps to a fixed numeral established in the sample words:\n• C = 8\n• A = 2\n• L = 5\n• I = 1\n• C = 8\n• U = 9\n• T = 6\nAssembling the digits for CALICUT produces **8251896**."
+        },
+        {
+            "id": 8,
+            "category": "Coding & Decoding (Alphabetical Positional Sum)",
+            "question": "In a military cipher system, if **D = 4**, **BAD = 7**, and **COVER = 63**, what is the numerical code value for **BASIS**?",
+            "visual": "Rule: Sum of standard alphabetical ranks (A=1, B=2, ..., Z=26)",
+            "options": [
+                "A) 48",
+                "B) 50",
+                "C) 52",
+                "D) 54"
+            ],
+            "answer": "B) 50",
+            "explanation": "The code equals the direct arithmetic sum of the alphabetical positions:\n• B = 2\n• A = 1\n• S = 19\n• I = 9\n• S = 19\nTotal = 2 + 1 + 19 + 9 + 19 = **50**."
+        },
+        {
+            "id": 9,
+            "category": "Coding & Decoding (Reverse Alphabetical Sum)",
+            "question": "If **GO = 32** and **SHE = 49**, what will be the coded numerical value for **SOME** in that same language?",
+            "visual": "Reverse rank values: A=26, B=25, ..., Z=1  (Formula: 27 - Rank)",
+            "options": [
+                "A) 54",
+                "B) 56",
+                "C) 58",
+                "D) 62"
+            ],
+            "answer": "B) 56",
+            "explanation": "The numerical code is the sum of the reverse alphabetical positions (27 - standard rank):\n• S: 27 - 19 = 8\n• O: 27 - 15 = 12\n• M: 27 - 13 = 14\n• E: 27 - 5 = 22\nSum = 8 + 12 + 14 + 22 = **56**."
+        },
+        {
+            "id": 10,
+            "category": "Coding & Decoding (Progressive Increment)",
+            "question": "In a certain code, **EARTH** is written as **FCUXM**. How will the word **SUPER** be written in that code?",
+            "visual": "Consecutive letter shifts: +1, +2, +3, +4, +5",
+            "options": [
+                "A) TWSIW",
+                "B) TVSIW",
+                "C) TWRIW",
+                "D) TXSJW"
+            ],
+            "answer": "A) TWSIW",
+            "explanation": "The forward shift increments by +1 for each successive position:\n• S (19) + 1 = 20 (T)\n• U (21) + 2 = 23 (W)\n• P (16) + 3 = 19 (S)\n• E (5) + 4 = 9 (I)\n• R (18) + 5 = 23 (W)\nResult = **TWSIW**."
+        },
+        {
+            "id": 11,
+            "category": "Coding & Decoding (Alternating Direction Shifts)",
+            "question": "If **STUDENT** is coded as **RUTEDOS**, how will **OFFICER** be coded under the exact same pattern?",
+            "visual": "Shift pattern: -1, +1, -1, +1, -1, +1, -1",
+            "options": [
+                "A) NGEJBFQ",
+                "B) PFEJBFQ",
+                "C) NGEIBFQ",
+                "D) NGEJCFQ"
+            ],
+            "answer": "A) NGEJBFQ",
+            "explanation": "The transformation alternates between -1 and +1:\n• O (-1) = N\n• F (+1) = G\n• F (-1) = E\n• I (+1) = J\n• C (-1) = B\n• E (+1) = F\n• R (-1) = Q\nResult = **NGEJBFQ**."
+        },
+        {
+            "id": 12,
+            "category": "Coding & Decoding (Common Message Deduction)",
+            "question": "In an intercepted cipher transmission:\n• **'pit dar na'** means **'you are good'**\n• **'dar tok pa'** means **'good and bad'**\n• **'na tim tok'** means **'they are bad'**\n\nWhich specific code word stands for **'they'**?",
+            "visual": "Isolate common words across statements: dar=good, na=are, tok=bad",
+            "options": [
+                "A) na",
+                "B) tok",
+                "C) tim",
+                "D) dar"
+            ],
+            "answer": "C) tim",
+            "explanation": "• Sentences 1 & 2 share 'dar' and 'good' → **dar = good**\n• Sentences 1 & 3 share 'na' and 'are' → **na = are**\n• Sentences 2 & 3 share 'tok' and 'bad' → **tok = bad**\nIn sentence 3 ('na tim tok' = 'they are bad'), na='are' and tok='bad'. The remaining word **tim** must represent **they**."
+        },
+        {
+            "id": 13,
+            "category": "Coding & Decoding (Artificial Substitution)",
+            "question": "If **'light'** is called **'morning'**, **'morning'** is called **'dark'**, **'dark'** is called **'night'**, **'night'** is called **'sunshine'**, and **'sunshine'** is called **'dusk'**, when do people normally sleep at bedtime?",
+            "visual": "Normal time = 'night'  -->  Coded substitution = 'sunshine'",
+            "options": [
+                "A) dark",
+                "B) night",
+                "C) sunshine",
+                "D) dusk"
+            ],
+            "answer": "C) sunshine",
+            "explanation": "In ordinary reality, people sleep during the **night**.\nUnder the given coding chain, **'night'** is called **'sunshine'**.\nHence, the correct coded answer is **sunshine**."
+        },
+        {
+            "id": 14,
+            "category": "Coding & Decoding (Functional Rank Transform)",
+            "question": "If **ACNE** is encoded as **3, 7, 29, 11**, what will be the coded numerical representation for **BOIL**?",
+            "visual": "Formula: Code = (2 × Alphabetical Rank) + 1",
+            "options": [
+                "A) 5, 31, 19, 25",
+                "B) 5, 29, 19, 25",
+                "C) 4, 30, 18, 24",
+                "D) 5, 31, 21, 27"
+            ],
+            "answer": "A) 5, 31, 19, 25",
+            "explanation": "Each letter's alphabetical rank $n$ is transformed by the formula $2n + 1$:\n• A(1) → 2(1)+1 = 3\n• C(3) → 2(3)+1 = 7\n• N(14) → 2(14)+1 = 29\n• E(5) → 2(5)+1 = 11\nApplying $2n + 1$ to **BOIL**:\n• B(2) → 2(2)+1 = **5**\n• O(15) → 2(15)+1 = **31**\n• I(9) → 2(9)+1 = **19**\n• L(12) → 2(12)+1 = **25**\nResult = **5, 31, 19, 25**."
+        },
+        {
+            "id": 15,
+            "category": "Coding & Decoding (Pairwise Position Swap)",
+            "question": "In a cryptographic protocol, **COMBAT** is coded as **OCBMTA**. How will the patrol reconnaissance word **PATROL** be coded under this protocol?",
+            "visual": "(PA)(TR)(OL)  -->  (AP)(RT)(LO)",
+            "options": [
+                "A) APRTLO",
+                "B) APTROL",
+                "C) APORTL",
+                "D) LORTAP"
+            ],
+            "answer": "A) APRTLO",
+            "explanation": "Adjacent letter pairs are swapped:\n• Letters 1 & 2: PA → **AP**\n• Letters 3 & 4: TR → **RT**\n• Letters 5 & 6: OL → **LO**\nCombining these yields **APRTLO**."
+        },
+        {
+            "id": 16,
+            "category": "Coding & Decoding (Direct Symbol Mapping)",
+            "question": "In an encrypted tactical dispatch:\n• **BRAKE** is written as **% # * ? @**\n• **MOTOR** is written as **$ + ! + #**\n\nHow is the target word **ROBOT** represented in that code?",
+            "visual": "R=#, O=+, B=%, O=+, T=!",
+            "options": [
+                "A) # + % + !",
+                "B) # % + + !",
+                "C) # + % ! +",
+                "D) ! + % + #"
+            ],
+            "answer": "A) # + % + !",
+            "explanation": "Extract individual symbol mappings:\n• R = **#** (from BRAKE and MOTOR)\n• O = **+** (from MOTOR)\n• B = **%** (from BRAKE)\n• O = **+** (from MOTOR)\n• T = **!** (from MOTOR)\nArranging for ROBOT yields **# + % + !**."
+        },
+        {
+            "id": 17,
+            "category": "Coding & Decoding (Positional Product by Length)",
+            "question": "If **CAT = 72** and **MAN = 84**, what is the coded numerical value for **LION**?",
+            "visual": "Formula: Code = (Sum of alphabetical ranks) × (Total number of letters)",
+            "options": [
+                "A) 180",
+                "B) 190",
+                "C) 200",
+                "D) 210"
+            ],
+            "answer": "C) 200",
+            "explanation": "Rule: (Sum of letter positions) × (Number of letters):\n• CAT: (3 + 1 + 20) × 3 = 24 × 3 = 72\n• MAN: (13 + 1 + 14) × 3 = 28 × 3 = 84\n• LION: L(12) + I(9) + O(15) + N(14) = 50. Length = 4 letters.\nCode = 50 × 4 = **200**."
+        },
+        {
+            "id": 18,
+            "category": "Coding & Decoding (Uniform Decrement Shift)",
+            "question": "In a defensive transmission, if **ROBUST** is coded as **QNATRS**, how will **VICTOR** be encoded under the same rule?",
+            "visual": "V(-1)=U, I(-1)=H, C(-1)=B, T(-1)=S, O(-1)=N, R(-1)=Q",
+            "options": [
+                "A) UHBSNQ",
+                "B) UHBTMQ",
+                "C) THBSNQ",
+                "D) UHBSNR"
+            ],
+            "answer": "A) UHBSNQ",
+            "explanation": "Every letter is shifted backward by 1 position (-1):\n• V (-1) = **U**\n• I (-1) = **H**\n• C (-1) = **B**\n• T (-1) = **S**\n• O (-1) = **N**\n• R (-1) = **Q**\nResult = **UHBSNQ**."
+        },
+        {
+            "id": 19,
+            "category": "Coding & Decoding (Progressive Variable Shift)",
+            "question": "If **GAMBLE** is coded as **HCPFQK** (with shifts of +1, +2, +3, +4, +5, +6), what will be the code for **DEFENCE** under this progressive shift (+1 through +7)?",
+            "visual": "D(+1), E(+2), F(+3), E(+4), N(+5), C(+6), E(+7)",
+            "options": [
+                "A) EGIISIL",
+                "B) EGIIQIL",
+                "C) FGJJTJM",
+                "D) EGHISIK"
+            ],
+            "answer": "A) EGIISIL",
+            "explanation": "The shift increases by 1 for each letter position:\n• D (4) + 1 = 5 (E)\n• E (5) + 2 = 7 (G)\n• F (6) + 3 = 9 (I)\n• E (5) + 4 = 9 (I)\n• N (14) + 5 = 19 (S)\n• C (3) + 6 = 9 (I)\n• E (5) + 7 = 12 (L)\nResult = **EGIISIL**."
+        },
+        {
+            "id": 20,
+            "category": "Coding & Decoding (Digital Root of Letter Ranks)",
+            "question": "If in a special code, **HARYANA** is coded as **8197151** (where double-digit positions are reduced by digit sum, e.g. R=18 → 1+8=9, Y=25 → 2+5=7, N=14 → 1+4=5), how will **DELHI** be coded?",
+            "visual": "D(4)=4, E(5)=5, L(12)->1+2=3, H(8)=8, I(9)=9",
+            "options": [
+                "A) 45389",
+                "B) 45189",
+                "C) 45289",
+                "D) 35389"
+            ],
+            "answer": "A) 45389",
+            "explanation": "Single-digit letters keep their rank ($D=4, E=5, H=8, I=9$). Double-digit ranks are summed:\n• L is 12 → 1 + 2 = **3**\nAssembling all digits for DELHI produces **45389**."
+        }
+    ]
+
+
+def get_question_bank(topic="Coding & Decoding (Mandatory Topic • 20 PYQs)"):
+    """
+    Returns the designated question bank.
+    Defaults directly to the mandatory 20 Previous Year Questions from Coding & Decoding.
+    """
+    if topic and "Coding" in topic:
+        return get_coding_decoding_pyq_bank()
+    return get_mixed_oir_bank()
+
+
 # ==============================================================================
 # 6. MODULAR HELPER FUNCTIONS & STATE MANAGEMENT
 # ==============================================================================
 def initialize_session_state():
     """Initializes and sanitizes Streamlit session state variables."""
+    if "topic_mode" not in st.session_state:
+        st.session_state.topic_mode = "Coding & Decoding (Mandatory Topic • 20 PYQs)"
     if "questions" not in st.session_state:
-        st.session_state.questions = get_question_bank()
+        st.session_state.questions = get_question_bank(st.session_state.topic_mode)
     if "current_q_idx" not in st.session_state:
         st.session_state.current_q_idx = 0
     if "score" not in st.session_state:
@@ -1031,11 +1332,12 @@ def evaluate_user_answer(selected, correct_answer):
 # ==============================================================================
 def render_header():
     """Renders the top VAISE header."""
-    st.markdown("""
+    topic_label = st.session_state.get("topic_mode", "Coding & Decoding (Mandatory Topic • 20 PYQs)")
+    st.markdown(f"""
     <div class="header-card">
         <span class="header-badge">VAISE • INTELLIGENCE & REASONING EVALUATION</span>
         <h1 class="header-title">VAISE</h1>
-        <p class="header-subtitle">Interactive General Intelligence & Reasoning Assessment • 20 Questions</p>
+        <p class="header-subtitle">Interactive Assessment • {topic_label}</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -1067,6 +1369,26 @@ def render_sidebar():
         st.markdown("**Platform:** VAISE")
         st.markdown("**Test Type:** Intelligence & Reasoning (OIR)")
         
+        # Topic Module Selector
+        topic_options = [
+            "Coding & Decoding (Mandatory Topic • 20 PYQs)",
+            "Comprehensive Mixed Assessment (20 Questions)"
+        ]
+        curr_mode = st.session_state.get("topic_mode", topic_options[0])
+        curr_idx = 0 if "Coding" in curr_mode else 1
+
+        selected_mode = st.selectbox(
+            "📚 Question Bank Topic",
+            options=topic_options,
+            index=curr_idx,
+            key="topic_mode_select"
+        )
+        if selected_mode != st.session_state.get("topic_mode"):
+            st.session_state.topic_mode = selected_mode
+            st.session_state.questions = get_question_bank(selected_mode)
+            reset_quiz()
+            st.rerun()
+
         st.divider()
 
         # Sound Effects Toggle
