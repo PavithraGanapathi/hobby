@@ -155,7 +155,28 @@ st.markdown("""
         margin-bottom: 16px;
     }
 
+    /* Tactical Expander for Formulas & Hints */
+    div[data-testid="stExpander"] {
+        background: rgba(13, 26, 45, 0.6) !important;
+        border: 1.5px solid rgba(56, 189, 248, 0.3) !important;
+        border-radius: 10px !important;
+        margin: 12px 0 16px 0 !important;
+    }
+    div[data-testid="stExpander"] summary {
+        color: #38bdf8 !important;
+        font-weight: 800 !important;
+        font-size: 0.95rem !important;
+        padding: 8px 12px !important;
+    }
+    div[data-testid="stExpander"] summary:hover {
+        color: #22d3ee !important;
+    }
+    div[data-testid="stExpander"] div[data-testid="stExpanderDetails"] {
+        padding: 0 12px 10px 12px !important;
+    }
+
     /* Visual Box for ASCII & Tables */
+
     .visual-container {
         background: #050b14 !important;
         border: 2px dashed #0284c7 !important;
@@ -1386,7 +1407,7 @@ def get_clocks_and_calendar_pyq_bank():
             "id": 11,
             "category": "SSB OIR • Calendar (Historical Day of Week)",
             "question": "India attained Independence on **15th August 1947**. On which day of the week did this historic event occur?",
-            "visual": "Odd days: 1600 yrs = 0 | 300 yrs = 1 | 46 yrs = 1 | Jan-Aug 15 = 3 --> Total = 5 (Friday)",
+            "visual": "Formula / Hint: 1600 yrs = 0 odd days | 300 yrs = 1 odd day | Odd days in 46 completed years (11 leap + 35 ord) + Jan-Aug 15 days",
             "options": [
                 "A) Thursday",
                 "B) Friday",
@@ -1414,7 +1435,7 @@ def get_clocks_and_calendar_pyq_bank():
             "id": 13,
             "category": "SSB OIR • Calendar (Relative Day Deduction)",
             "question": "If the **day before yesterday was Thursday**, what day of the week will it be **four days after tomorrow**?",
-            "visual": "Day Before Yesterday: Thu  -->  Yesterday: Fri  -->  Today: Sat  -->  Tomorrow: Sun",
+            "visual": "Formula / Hint: Work step-by-step from 'Day before yesterday' to determine 'Today', then project forward 4 days after tomorrow",
             "options": [
                 "A) Wednesday",
                 "B) Thursday",
@@ -1456,7 +1477,7 @@ def get_clocks_and_calendar_pyq_bank():
             "id": 16,
             "category": "SSB OIR • Calendar (Year-to-Year Shift)",
             "question": "If **1st January 2006** was a **Sunday**, what day of the week was **1st January 2010**?",
-            "visual": "2006(1) + 2007(1) + 2008(leap:2) + 2009(1) = 5 Odd Days  |  Sunday + 5 = Friday",
+            "visual": "Formula / Hint: Ordinary year = 1 odd day (+1) | Leap year = 2 odd days (+2). Sum odd days from 2006 to 2009 and add to Sunday",
             "options": [
                 "A) Friday",
                 "B) Thursday",
@@ -1484,7 +1505,7 @@ def get_clocks_and_calendar_pyq_bank():
             "id": 18,
             "category": "SSB OIR • Calendar (Leap Year Century Trick)",
             "question": "Cadet Vikram was born on **29th February 1896**. How many actual birthdays did he celebrate up to and including **29th February 1904**?",
-            "visual": "Birth: 29 Feb 1896  -->  1900 is NOT a leap year (divisible by 100, not 400)  -->  Next: 29 Feb 1904",
+            "visual": "Formula / Hint: In Gregorian calendar, century years are leap only if divisible by 400. Was 1900 a leap year?",
             "options": [
                 "A) 2",
                 "B) 4",
@@ -1512,7 +1533,7 @@ def get_clocks_and_calendar_pyq_bank():
             "id": 20,
             "category": "SSB OIR • Calendar (Constitution Day of India)",
             "question": "The Republic of India came into being with the adoption of its Constitution on **26th January 1950**. On which day of the week did 26th January 1950 fall?",
-            "visual": "1600 yrs = 0 | 300 yrs = 1 | 49 yrs (12 leap + 37 ord) = 5 | Jan 26 = 5 --> Total = 11 ≡ 4 (Thursday)",
+            "visual": "Formula / Hint: 1600 yrs = 0 odd days | 300 yrs = 1 odd day | 49 completed years (12 leap + 37 ord) + 26 days of Jan 1950",
             "options": [
                 "A) Tuesday",
                 "B) Wednesday",
@@ -1566,6 +1587,8 @@ def initialize_session_state():
         st.session_state.sound_played = False
     if "sound_enabled" not in st.session_state:
         st.session_state.sound_enabled = True
+    if "show_hints" not in st.session_state:
+        st.session_state.show_hints = True
     if "history" not in st.session_state:
         st.session_state.history = []
     if "quiz_completed" not in st.session_state:
@@ -1693,6 +1716,9 @@ def render_sidebar():
         sound_on = st.toggle("🔊 Sound Effects (Hooray / Ohh)", value=st.session_state.sound_enabled)
         st.session_state.sound_enabled = sound_on
 
+        hints_allowed = st.toggle("💡 Allow Formula / Hint Access", value=st.session_state.get("show_hints", True), help="Enables a collapsible 'Need a Formula / Hint?' box on questions.")
+        st.session_state.show_hints = hints_allowed
+
         st.divider()
 
         # Score & Progress Tracking
@@ -1760,9 +1786,16 @@ def render_quiz_screen():
     </div>
     """, unsafe_allow_html=True)
 
-    # Visual / Diagram if available
-    if q_data.get("visual"):
-        st.markdown(f'<div class="visual-container">{q_data["visual"]}</div>', unsafe_allow_html=True)
+    # Visual / Diagram & Collapsible Formula/Hint
+    visual = q_data.get("visual")
+    if visual:
+        # ASCII diagrams essential to read the problem (e.g., cube nets, matrices, dice positions)
+        is_diagram = any(marker in visual for marker in ["+---+", "+--------+", "Position 1:"])
+        if is_diagram:
+            st.markdown(f'<div class="visual-container">{visual}</div>', unsafe_allow_html=True)
+        elif st.session_state.get("show_hints", True):
+            with st.expander("💡 Need a Formula / Hint? (Click to view)", expanded=False):
+                st.markdown(f'<div class="visual-container" style="margin: 4px 0;">{visual}</div>', unsafe_allow_html=True)
 
     # Options Selection Area
     if not st.session_state.answered:
