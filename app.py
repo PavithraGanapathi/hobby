@@ -1235,12 +1235,304 @@ def get_coding_decoding_pyq_bank():
     ]
 
 
-def get_question_bank(topic="Coding & Decoding (Mandatory Topic • 20 PYQs)"):
+def get_clocks_and_calendar_pyq_bank():
+    """
+    Returns exactly 20 authentic Previous Year Questions (PYQs) from SSB Interview
+    NAOO (Naval Air Operations Officer / Observer) Entry OIR Test
+    covering the high-weightage topics: Clocks & Calendar.
+    """
+    return [
+        {
+            "id": 1,
+            "category": "SSB OIR • Clocks (Angle Between Hands)",
+            "question": "An officer candidate at INS Garuda checks the cockpit analog clock at **08:30 hrs (8:30 AM)** during pre-flight briefing. What is the angle between the hour hand and the minute hand?",
+            "visual": "Angle Formula: θ = |30H - (11/2)M|  -->  H = 8, M = 30",
+            "options": [
+                "A) 65°",
+                "B) 75°",
+                "C) 80°",
+                "D) 85°"
+            ],
+            "answer": "B) 75°",
+            "explanation": "Using standard clock angle formula:\n• $\\theta = |30H - \\frac{11}{2}M|$\n• For $H = 8$ and $M = 30$:\n• $\\theta = |30(8) - \\frac{11}{2}(30)| = |240 - 165| = 75^\\circ$.\n\nHence, the angle between the hour and minute hands at 8:30 is **75°**."
+        },
+        {
+            "id": 2,
+            "category": "SSB OIR • Clocks (Coinciding Hands)",
+            "question": "During a naval navigation exercise, at what exact time between **4 o'clock and 5 o'clock** will the hour hand and the minute hand of the chronometer coincide (0° angle)?",
+            "visual": "At H o'clock, hands coincide at M = (60/11) × H minutes past H",
+            "options": [
+                "A) 21 9/11 min past 4",
+                "B) 22 min past 4",
+                "C) 20 4/11 min past 4",
+                "D) 23 2/11 min past 4"
+            ],
+            "answer": "A) 21 9/11 min past 4",
+            "explanation": "The minute hand gains 55 minutes spaces over the hour hand in 60 minutes (ratio = $\\frac{60}{55} = \\frac{12}{11}$):\n• At 4 o'clock, the hour hand is 20 minute spaces ahead.\n• To coincide, the minute hand must gain 20 spaces: $20 \\times \\frac{12}{11} = \\frac{240}{11} = 21 \\frac{9}{11}$ minutes.\n\nAlternatively, using $\\theta = |30H - \\frac{11}{2}M| = 0$:\n• $30(4) = \\frac{11}{2}M \\implies 120 = \\frac{11}{2}M \\implies M = \\frac{240}{11} = 21 \\frac{9}{11}$ min.\n\nThus, the hands coincide at **21 9/11 min past 4**."
+        },
+        {
+            "id": 3,
+            "category": "SSB OIR • Clocks (Hour Hand Angular Displacement)",
+            "question": "A naval ship's bridge clock shows **0800 hrs (8:00 AM)** as the vessel leaves harbour. Through how many degrees will the hour hand rotate when the clock reads **1400 hrs (2:00 PM)** on the same day?",
+            "visual": "08:00 AM to 02:00 PM = 6 Hours  |  Hour hand moves 30° per hour",
+            "options": [
+                "A) 150°",
+                "B) 165°",
+                "C) 180°",
+                "D) 210°"
+            ],
+            "answer": "C) 180°",
+            "explanation": "• Total elapsed time from 8:00 AM to 2:00 PM = 6 hours.\n• The hour hand makes a full $360^\\circ$ rotation in 12 hours, meaning it turns $\\frac{360^\\circ}{12} = 30^\\circ$ each hour (or $0.5^\\circ$ per minute).\n• Angular displacement = $6 \\times 30^\\circ = 180^\\circ$.\n\nTherefore, the hour hand rotates through **180°**."
+        },
+        {
+            "id": 4,
+            "category": "SSB OIR • Clocks (Opposite Direction Hands)",
+            "question": "At what time between **7 o'clock and 8 o'clock** are the hands of a clock pointing in diametrically opposite directions (forming a straight line of 180°)?",
+            "visual": "θ = 180°  -->  M = (2/11) × |30H - 180| for H = 7",
+            "options": [
+                "A) 5 5/11 min past 7",
+                "B) 5 min past 7",
+                "C) 6 2/11 min past 7",
+                "D) 5 8/11 min past 7"
+            ],
+            "answer": "A) 5 5/11 min past 7",
+            "explanation": "At 7 o'clock, the hour hand is at 35 minute spaces (or $210^\\circ$).\n• For opposite direction (180°), the hands must be separated by 30 minute spaces.\n• Since the hour hand is ahead of the 30-space mark, the minute hand needs to be at $35 - 30 = 5$ minute spaces.\n• Time required to gain 5 minute spaces = $5 \\times \\frac{12}{11} = \\frac{60}{11} = 5 \\frac{5}{11}$ minutes.\n\nUsing formula: $M = \\frac{2}{11}(30 \\times 7 - 180) = \\frac{2}{11}(210 - 180) = \\frac{2}{11}(30) = \\frac{60}{11} = 5 \\frac{5}{11}$ min.\n\nThus, hands are in opposite directions at **5 5/11 min past 7**."
+        },
+        {
+            "id": 5,
+            "category": "SSB OIR • Clocks (Mirror Image Reflection)",
+            "question": "An observer candidate observes an analog clock dial through the periscope's reflective mirror, which shows the apparent time as **03:40**. What is the actual true time?",
+            "visual": "Mirror Image Formula: Actual Time = 11:60 - Mirror Time",
+            "options": [
+                "A) 8:40",
+                "B) 9:20",
+                "C) 7:20",
+                "D) 8:20"
+            ],
+            "answer": "D) 8:20",
+            "explanation": "To determine the actual time from a vertical mirror reflection:\n• Subtract the reflected time from 11:60 (or 23:60 for 24-hr clock):\n  $$\\text{Actual Time} = 11:60 - 03:40 = 08:20$$\n\nTherefore, the true time displayed on the clock is **8:20**."
+        },
+        {
+            "id": 6,
+            "category": "SSB OIR • Clocks (Hands in a Straight Line)",
+            "question": "In a complete 24-hour operational cycle of a naval base, how many times do the hands of a clock form a **straight line**?",
+            "visual": "Straight Line = Hands Coinciding (0°) + Hands Opposite (180°)",
+            "options": [
+                "A) 22 times",
+                "B) 24 times",
+                "C) 44 times",
+                "D) 48 times"
+            ],
+            "answer": "C) 44 times",
+            "explanation": "Hands are in a 'straight line' in two conditions:\n1. When they **coincide (0°)**: Occurs 11 times in 12 hours (coincides only once between 11 and 1), which is $11 \\times 2 = 22$ times in 24 hours.\n2. When they are **diametrically opposite (180°)**: Occurs 11 times in 12 hours (opposite only once between 5 and 7), which is $11 \\times 2 = 22$ times in 24 hours.\n\n• Total occurrences in a straight line in 24 hours = $22 + 22 = 44$ times."
+        },
+        {
+            "id": 7,
+            "category": "SSB OIR • Clocks (Right Angles in 24 Hours)",
+            "question": "During a 24-hour maritime watchkeeping duty, how many times are the hour hand and minute hand of a clock at right angles (**90°**) to each other?",
+            "visual": "Right Angles (90°): 2 times/hr nominally, but 44 times in 24 hours",
+            "options": [
+                "A) 22 times",
+                "B) 44 times",
+                "C) 48 times",
+                "D) 88 times"
+            ],
+            "answer": "B) 44 times",
+            "explanation": "In general, clock hands are at right angles ($90^\\circ$) twice every hour.\n• However, in a 12-hour period, between 2–4 and 8–10 o'clock, the right angles occur only 3 times each instead of 4 (with 3:00 and 9:00 being common shared points).\n• Right angles in 12 hours = $22$ times.\n• Right angles in 24 hours = $22 \\times 2 = 44$ times.\n\nHence, the hands form a right angle **44 times** in 24 hours."
+        },
+        {
+            "id": 8,
+            "category": "SSB OIR • Clocks (Reflex Angle Calculation)",
+            "question": "What is the **reflex angle** between the hands of a clock at **10:25**?",
+            "visual": "Angle θ = |30H - (11/2)M|  |  Reflex Angle = 360° - θ",
+            "options": [
+                "A) 162.5°",
+                "B) 180°",
+                "C) 205.5°",
+                "D) 197.5°"
+            ],
+            "answer": "D) 197.5°",
+            "explanation": "First calculate the interior angle $\\theta$ between the hands at $H = 10$, $M = 25$:\n• $\\theta = |30(10) - \\frac{11}{2}(25)| = |300 - 137.5| = 162.5^\\circ$\n• By definition, a reflex angle is greater than $180^\\circ$ and less than $360^\\circ$:\n• $\\text{Reflex Angle} = 360^\\circ - 162.5^\\circ = 197.5^\\circ$ (or $197 \\frac{1}{2}^\\circ$).\n\nThus, the reflex angle is **197.5°**."
+        },
+        {
+            "id": 9,
+            "category": "SSB OIR • Clocks (Faulty Gaining Clock)",
+            "question": "A mechanical chronometer gains **5 seconds every 3 minutes**. It is synchronized correctly at **07:00 AM**. What is the true time when the chronometer displays **04:15 PM** on the same day?",
+            "visual": "Chronometer runs 3 min 5 sec (37/12 min) for every 3 min of true time",
+            "options": [
+                "A) 3:45 PM",
+                "B) 4:00 PM",
+                "C) 4:05 PM",
+                "D) 4:10 PM"
+            ],
+            "answer": "B) 4:00 PM",
+            "explanation": "1. Elapsed time on the fast watch from 7:00 AM to 4:15 PM:\n• $9\\text{ hrs } 15\\text{ min} = (9 \\times 60) + 15 = 555\\text{ minutes}$.\n\n2. Gain rate:\n• In $3\\text{ min}$ true time, watch shows $3\\text{ min } 5\\text{ s} = 3 + \\frac{5}{60} = 3 + \\frac{1}{12} = \\frac{37}{12}\\text{ minutes}$.\n• So $\\frac{37}{12}$ watch minutes = $3$ true minutes.\n• $1$ watch minute = $3 \\times \\frac{12}{37} = \\frac{36}{37}$ true minutes.\n\n3. True time for 555 watch minutes:\n• $\\text{True minutes} = 555 \\times \\frac{36}{37} = 15 \\times 36 = 540\\text{ minutes} = 9\\text{ hours}$.\n\n• True time = $7:00\\text{ AM} + 9\\text{ hours} =$ **4:00 PM**."
+        },
+        {
+            "id": 10,
+            "category": "SSB OIR • Clocks (Coincidence Rate & Error)",
+            "question": "The hands of an analog clock coincide every **64 minutes** of true time. How much time does the clock lose or gain in a 24-hour day?",
+            "visual": "Normal Coincidence = 65 (5/11) min  |  Observed = 64 min  -->  Clock is FAST",
+            "options": [
+                "A) 32 8/11 min loss",
+                "B) 36 5/11 min gain",
+                "C) 30 min gain",
+                "D) 32 8/11 min gain"
+            ],
+            "answer": "D) 32 8/11 min gain",
+            "explanation": "In an accurate clock, hands coincide every $\\frac{720}{11} = 65 \\frac{5}{11}$ minutes.\n• Since the hands coincide every 64 minutes (faster than standard), the clock is **gaining time**.\n• Gain in 64 minutes = $\\left(65 \\frac{5}{11} - 64\\right) = \\frac{16}{11}$ minutes.\n• Gain per minute = $\\frac{16}{11 \\times 64} = \\frac{1}{44}$ minute.\n• Total gain in 24 hours ($24 \\times 60 = 1440$ minutes):\n  $$\\text{Gain} = 1440 \\times \\frac{1}{44} = \\frac{360}{11} = 32 \\frac{8}{11}\\text{ minutes}$$\n\nHence, the clock gains **32 8/11 min** in 24 hours."
+        },
+        {
+            "id": 11,
+            "category": "SSB OIR • Calendar (Historical Day of Week)",
+            "question": "India attained Independence on **15th August 1947**. On which day of the week did this historic event occur?",
+            "visual": "Odd days: 1600 yrs = 0 | 300 yrs = 1 | 46 yrs = 1 | Jan-Aug 15 = 3 --> Total = 5 (Friday)",
+            "options": [
+                "A) Thursday",
+                "B) Friday",
+                "C) Saturday",
+                "D) Wednesday"
+            ],
+            "answer": "B) Friday",
+            "explanation": "Step-by-step Odd Days Calculation:\n1. 1600 years: 0 odd days.\n2. 300 years (1601 to 1900): 1 odd day.\n3. 46 completed years (1901 to 1946):\n• Leap years = $46 // 4 = 11$.\n• Ordinary years = $46 - 11 = 35$.\n• Odd days = $(11 \\times 2) + (35 \\times 1) = 22 + 35 = 57 \\equiv 1\\text{ odd day } (57 \\pmod 7)$.\n\n4. Days in 1947 (up to 15 Aug):\n• Jan(3) + Feb(0) + Mar(3) + Apr(2) + May(3) + Jun(2) + Jul(3) + Aug 15(1) = 17 days $\\equiv 3\\text{ odd days}$.\n\n5. Total odd days = $1 + 1 + 3 = 5\\text{ odd days}$.\n• Day code 5 corresponds to **Friday** (0=Sun, 1=Mon, ..., 5=Fri)."
+        },
+        {
+            "id": 12,
+            "category": "SSB OIR • Calendar (Repetition of Calendar)",
+            "question": "A naval officer is cataloguing annual operational logs. Which future year will have the exact same calendar as the year **2007**?",
+            "visual": "Calendar Repeat Rule: Leap+1 (+6 yrs), Leap+2/3 (+11 yrs), Leap (+28 yrs)",
+            "options": [
+                "A) 2014",
+                "B) 2016",
+                "C) 2018",
+                "D) 2020"
+            ],
+            "answer": "C) 2018",
+            "explanation": "Standard Calendar Repetition Rules:\n• A leap year repeats after 28 years.\n• Year immediately after leap year (Leap + 1) repeats after 6 years.\n• Years that are (Leap + 2) or (Leap + 3) repeat after **11 years**.\n\nSince 2004 was a leap year, 2007 is (Leap + 3):\n• $2007 + 11 = 2018$.\n\nVerifying odd days:\n2007(1) + 2008(2) + 2009(1) + 2010(1) + 2011(1) + 2012(2) + 2013(1) + 2014(1) + 2015(1) + 2016(2) + 2017(1) = 14 odd days $\\equiv 0\\pmod 7$.\nSince 2018 is also an ordinary year, **2018** has the identical calendar to 2007."
+        },
+        {
+            "id": 13,
+            "category": "SSB OIR • Calendar (Relative Day Deduction)",
+            "question": "If the **day before yesterday was Thursday**, what day of the week will it be **four days after tomorrow**?",
+            "visual": "Day Before Yesterday: Thu  -->  Yesterday: Fri  -->  Today: Sat  -->  Tomorrow: Sun",
+            "options": [
+                "A) Wednesday",
+                "B) Thursday",
+                "C) Friday",
+                "D) Saturday"
+            ],
+            "answer": "B) Thursday",
+            "explanation": "Break down the timeline relative to Today:\n• Day before yesterday = Thursday\n• Yesterday = Friday\n• **Today = Saturday**\n• Tomorrow = Sunday\n• Four days after tomorrow = Sunday + 4 days = **Thursday**.\n\nThus, the resulting day is **Thursday**."
+        },
+        {
+            "id": 14,
+            "category": "SSB OIR • Calendar (Century Last Day Properties)",
+            "question": "Based on the mathematical principles of the Gregorian calendar, which of the following days **can never be the last day of a century**?",
+            "visual": "Century Odd Days: 100 yr=5 (Fri), 200 yr=3 (Wed), 300 yr=1 (Mon), 400 yr=0 (Sun)",
+            "options": [
+                "A) Tuesday",
+                "B) Wednesday",
+                "C) Friday",
+                "D) Sunday"
+            ],
+            "answer": "A) Tuesday",
+            "explanation": "Odd days at the close of centuries:\n• 100 years = 5 odd days $\\rightarrow$ **Friday**\n• 200 years = 3 odd days $\\rightarrow$ **Wednesday**\n• 300 years = 1 odd day $\\rightarrow$ **Monday**\n• 400 years = 0 odd days $\\rightarrow$ **Sunday**\n\nThe last day of a century can ONLY be Friday, Wednesday, Monday, or Sunday.\n\nTherefore, **Tuesday**, **Thursday**, and **Saturday** can NEVER be the last day of a century."
+        },
+        {
+            "id": 15,
+            "category": "SSB OIR • Calendar (Odd Days in 400 Years)",
+            "question": "How many **odd days** are accumulated over a continuous span of **400 consecutive years**?",
+            "visual": "(100 yrs × 4) + 1 leap century day = (5 × 4) + 1 = 21 days ≡ 0 odd days",
+            "options": [
+                "A) 0",
+                "B) 1",
+                "C) 3",
+                "D) 5"
+            ],
+            "answer": "A) 0",
+            "explanation": "• A normal 100-year span contains 76 ordinary years and 24 leap years:\n  $(76 \\times 1) + (24 \\times 2) = 124\\text{ days} = 17\\text{ weeks } + 5\\text{ odd days}$.\n• In 400 years, there are $4 \\times 100\\text{-year periods}$, plus 1 extra day because the 400th year is a leap century year:\n• Total odd days = $(5 \\times 4) + 1 = 21\\text{ days}$.\n• Since $21 \\div 7 = 3$ exact weeks with remainder 0, there are **0 odd days** in 400 years."
+        },
+        {
+            "id": 16,
+            "category": "SSB OIR • Calendar (Year-to-Year Shift)",
+            "question": "If **1st January 2006** was a **Sunday**, what day of the week was **1st January 2010**?",
+            "visual": "2006(1) + 2007(1) + 2008(leap:2) + 2009(1) = 5 Odd Days  |  Sunday + 5 = Friday",
+            "options": [
+                "A) Friday",
+                "B) Thursday",
+                "C) Saturday",
+                "D) Sunday"
+            ],
+            "answer": "A) Friday",
+            "explanation": "Count odd days for each elapsed year:\n• 2006 (ordinary year) = 1 odd day\n• 2007 (ordinary year) = 1 odd day\n• 2008 (leap year) = 2 odd days\n• 2009 (ordinary year) = 1 odd day\n\nTotal odd days from 1 Jan 2006 to 1 Jan 2010 = $1 + 1 + 2 + 1 = 5$ odd days.\n• Sunday + 5 days = **Friday**."
+        },
+        {
+            "id": 17,
+            "category": "SSB OIR • Calendar (Intra-Year Month Shift)",
+            "question": "In a standard non-leap year, if **15th March** fell on a **Wednesday**, what day of the week was **15th August** in that same year?",
+            "visual": "Remaining March(16) + Apr(30) + May(31) + Jun(30) + Jul(31) + Aug(15) = 153 days ≡ 6 mod 7",
+            "options": [
+                "A) Monday",
+                "B) Tuesday",
+                "C) Wednesday",
+                "D) Thursday"
+            ],
+            "answer": "B) Tuesday",
+            "explanation": "Calculate elapsed days from 15th March to 15th August:\n• Remaining in March: $31 - 15 = 16\\text{ days} \\equiv 2\\pmod 7$\n• April: $30\\text{ days} \\equiv 2\\pmod 7$\n• May: $31\\text{ days} \\equiv 3\\pmod 7$\n• June: $30\\text{ days} \\equiv 2\\pmod 7$\n• July: $31\\text{ days} \\equiv 3\\pmod 7$\n• August: $15\\text{ days} \\equiv 1\\pmod 7$\n\nTotal odd days = $2 + 2 + 3 + 2 + 3 + 1 = 13 \\equiv 6\\text{ odd days}$.\n• Wednesday + 6 days = **Tuesday**."
+        },
+        {
+            "id": 18,
+            "category": "SSB OIR • Calendar (Leap Year Century Trick)",
+            "question": "Cadet Vikram was born on **29th February 1896**. How many actual birthdays did he celebrate up to and including **29th February 1904**?",
+            "visual": "Birth: 29 Feb 1896  -->  1900 is NOT a leap year (divisible by 100, not 400)  -->  Next: 29 Feb 1904",
+            "options": [
+                "A) 2",
+                "B) 4",
+                "C) 1",
+                "D) 0"
+            ],
+            "answer": "C) 1",
+            "explanation": "• Cadet Vikram was born on a leap day: 29th February 1896.\n• The next 4th year was **1900**.\n• In the Gregorian calendar, a century year is a leap year **only if it is divisible by 400**. Since 1900 is NOT divisible by 400, the year 1900 was an ordinary year with only 28 days in February!\n• Thus, there was no 29th February in 1900.\n• The first leap day after his birth occurred on **29th February 1904**.\n• Therefore, by 29th February 1904, he had celebrated only **1** birthday."
+        },
+        {
+            "id": 19,
+            "category": "SSB OIR • Calendar (Maximum Leap Year Interval)",
+            "question": "What is the **maximum possible gap** in years between two consecutive leap years in the calendar?",
+            "visual": "Example: 1896 (Leap) to 1904 (Leap)  -->  Gap = 8 years (1900 skipped)",
+            "options": [
+                "A) 4 years",
+                "B) 6 years",
+                "C) 8 years",
+                "D) 10 years"
+            ],
+            "answer": "C) 8 years",
+            "explanation": "Leap years normally occur every 4 years. However, when a century year is not divisible by 400 (such as 1700, 1800, 1900, 2100), it is not a leap year.\n• For instance, between the leap year 1896 and the next leap year 1904, the intervening year 1900 is an ordinary year.\n• The gap between 1896 and 1904 is $1904 - 1896 = 8\\text{ years}$.\n\nHence, the maximum gap between two successive leap years is **8 years**."
+        },
+        {
+            "id": 20,
+            "category": "SSB OIR • Calendar (Constitution Day of India)",
+            "question": "The Republic of India came into being with the adoption of its Constitution on **26th January 1950**. On which day of the week did 26th January 1950 fall?",
+            "visual": "1600 yrs = 0 | 300 yrs = 1 | 49 yrs (12 leap + 37 ord) = 5 | Jan 26 = 5 --> Total = 11 ≡ 4 (Thursday)",
+            "options": [
+                "A) Tuesday",
+                "B) Wednesday",
+                "C) Friday",
+                "D) Thursday"
+            ],
+            "answer": "D) Thursday",
+            "explanation": "Step-by-step Odd Days Calculation:\n1. 1600 years: 0 odd days.\n2. 300 years (1601–1900): 1 odd day.\n3. 49 completed years (1901–1949):\n• Leap years = $49 // 4 = 12$.\n• Ordinary years = $49 - 12 = 37$.\n• Total days = $(12 \\times 2) + (37 \\times 1) = 24 + 37 = 61\\text{ days} \\equiv 5\\text{ odd days } (61 \\pmod 7)$.\n\n4. Days in 1950 (up to 26 Jan):\n• 26 days $\\equiv 5\\text{ odd days } (26 \\pmod 7)$.\n\n5. Total odd days = $1 + 5 + 5 = 11 \\equiv 4\\text{ odd days } (11 \\pmod 7)$.\n• Day code 4 corresponds to **Thursday** (0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu).\n\nTherefore, 26th January 1950 was a **Thursday**."
+        }
+    ]
+
+
+def get_question_bank(topic="Clocks & Calendar (SSB NAOO Entry PYQs • 20 Questions)"):
     """
     Returns the designated question bank.
-    Defaults directly to the mandatory 20 Previous Year Questions from Coding & Decoding.
+    Defaults to the authentic 20 Previous Year Questions from Clocks & Calendar (SSB NAOO Entry).
     """
-    if topic and "Coding" in topic:
+    if topic and ("Clocks" in topic or "Calendar" in topic):
+        return get_clocks_and_calendar_pyq_bank()
+    elif topic and "Coding" in topic:
         return get_coding_decoding_pyq_bank()
     return get_mixed_oir_bank()
 
@@ -1251,7 +1543,7 @@ def get_question_bank(topic="Coding & Decoding (Mandatory Topic • 20 PYQs)"):
 def initialize_session_state():
     """Initializes and sanitizes Streamlit session state variables."""
     if "topic_mode" not in st.session_state:
-        st.session_state.topic_mode = "Coding & Decoding (Mandatory Topic • 20 PYQs)"
+        st.session_state.topic_mode = "Clocks & Calendar (SSB NAOO Entry PYQs • 20 Questions)"
     if "questions" not in st.session_state:
         st.session_state.questions = get_question_bank(st.session_state.topic_mode)
     if "current_q_idx" not in st.session_state:
@@ -1332,7 +1624,7 @@ def evaluate_user_answer(selected, correct_answer):
 # ==============================================================================
 def render_header():
     """Renders the top VAISE header."""
-    topic_label = st.session_state.get("topic_mode", "Coding & Decoding (Mandatory Topic • 20 PYQs)")
+    topic_label = st.session_state.get("topic_mode", "Clocks & Calendar (SSB NAOO Entry PYQs • 20 Questions)")
     st.markdown(f"""
     <div class="header-card">
         <span class="header-badge">VAISE • INTELLIGENCE & REASONING EVALUATION</span>
@@ -1371,11 +1663,17 @@ def render_sidebar():
         
         # Topic Module Selector
         topic_options = [
+            "Clocks & Calendar (SSB NAOO Entry PYQs • 20 Questions)",
             "Coding & Decoding (Mandatory Topic • 20 PYQs)",
             "Comprehensive Mixed Assessment (20 Questions)"
         ]
         curr_mode = st.session_state.get("topic_mode", topic_options[0])
-        curr_idx = 0 if "Coding" in curr_mode else 1
+        if "Clocks" in curr_mode or "Calendar" in curr_mode:
+            curr_idx = 0
+        elif "Coding" in curr_mode:
+            curr_idx = 1
+        else:
+            curr_idx = 2
 
         selected_mode = st.selectbox(
             "📚 Question Bank Topic",
