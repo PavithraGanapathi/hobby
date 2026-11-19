@@ -1546,12 +1546,305 @@ def get_clocks_and_calendar_pyq_bank():
     ]
 
 
-def get_question_bank(topic="Clocks & Calendar (SSB NAOO Entry PYQs • 20 Questions)"):
+def get_analogy_ssb_oir_bank():
+    """
+    Returns exactly 20 curated Analogy questions from R.S. Aggarwal's
+    'A Modern Approach to Verbal & Non-Verbal Reasoning' (Chapter 1: Analogy)
+    covering high-frequency SSB Interview OIR patterns across Word, Science/Instrument,
+    Analogous Pair, Double, Triad, Number, and Alphabet Analogies.
+    """
+    return [
+        {
+            "id": 1,
+            "category": "SSB OIR • Word Analogy (Aviation & Place)",
+            "question": "Complete the analogy:\n\n**Car : Garage :: Aeroplane : ?**",
+            "visual": "Relationship Hint: First is a vehicle and second is the enclosed shelter where it is parked/serviced.",
+            "options": [
+                "A) Port",
+                "B) Depot",
+                "C) Hangar",
+                "D) Harbour"
+            ],
+            "answer": "C) Hangar",
+            "explanation": "A **car** is parked and maintained inside a **garage**. Similarly, an **aeroplane** is housed and serviced inside a **hangar** (R.S. Aggarwal, Ex. 1A, Q.16)."
+        },
+        {
+            "id": 2,
+            "category": "SSB OIR • Word Analogy (Physics & Ballistics)",
+            "question": "Complete the analogy:\n\n**Planet : Orbit :: Projectile : ?**",
+            "visual": "Relationship Hint: Second is the curved path traced in space by the motion of the first.",
+            "options": [
+                "A) Trajectory",
+                "B) Track",
+                "C) Milky Way",
+                "D) Path"
+            ],
+            "answer": "A) Trajectory",
+            "explanation": "An **orbit** is the path traced by a **planet** in space. Likewise, the curved flight path traced by a **projectile** under gravity is called its **trajectory** (R.S. Aggarwal, Ex. 1A, Q.27)."
+        },
+        {
+            "id": 3,
+            "category": "SSB OIR • Word Analogy (Maritime Collective Noun)",
+            "question": "Complete the analogy:\n\n**Convoy : Ships :: Deputation : ?**",
+            "visual": "Relationship Hint: First is a collective group of the second organized for a specific mission or purpose.",
+            "options": [
+                "A) Voters",
+                "B) Representatives",
+                "C) Politicians",
+                "D) Writers"
+            ],
+            "answer": "B) Representatives",
+            "explanation": "A **convoy** is a group of **ships** travelling together for mutual protection or a mission. Similarly, a **deputation** is an appointed group of **representatives** sent on a specific task (R.S. Aggarwal, Ex. 1C, Q.50)."
+        },
+        {
+            "id": 4,
+            "category": "SSB OIR • Word Analogy (Heat Transfer Physics)",
+            "question": "Complete the analogy:\n\n**Water : Convection :: Space : ?**",
+            "visual": "Relationship Hint: Second is the physical mode by which heat travels through the first.",
+            "options": [
+                "A) Conduction",
+                "B) Transference",
+                "C) Vacuum",
+                "D) Radiation"
+            ],
+            "answer": "D) Radiation",
+            "explanation": "Heat is transferred through fluids like **water** primarily by **convection**, whereas heat travels across empty **space** (vacuum) without a medium by **radiation** (R.S. Aggarwal, Ex. 1A, Q.21)."
+        },
+        {
+            "id": 5,
+            "category": "SSB OIR • Word Analogy (Scientific Instruments)",
+            "question": "Complete the analogy:\n\n**Seismograph : Earthquakes :: Taseometer : ?**",
+            "visual": "Relationship Hint: First is a precision instrument used to detect and measure the second.",
+            "options": [
+                "A) Volcanoes",
+                "B) Resistances",
+                "C) Landslides",
+                "D) Strains"
+            ],
+            "answer": "D) Strains",
+            "explanation": "A **seismograph** is an instrument used to record the intensity of **earthquakes**. Similarly, a **taseometer** is an instrument used in engineering to measure physical **strains** in a structure (R.S. Aggarwal, Ex. 1C, Q.61)."
+        },
+        {
+            "id": 6,
+            "category": "SSB OIR • Word Analogy (World Parliaments)",
+            "question": "Complete the analogy:\n\n**USA : Congress :: Iran : ?**",
+            "visual": "Relationship Hint: Second is the official name of the national legislature/parliament of the first country.",
+            "options": [
+                "A) Althing",
+                "B) Storting",
+                "C) Majlis",
+                "D) Cortes"
+            ],
+            "answer": "C) Majlis",
+            "explanation": "The national legislature of the **USA** is called the **Congress**, and the parliament of **Iran** is called the **Majlis** (Althing = Iceland, Storting = Norway, Cortes = Spain; R.S. Aggarwal, Ex. 1C, Q.64)."
+        },
+        {
+            "id": 7,
+            "category": "SSB OIR • Simple Analogy (Medical Instruments)",
+            "question": "*Hygrometer* is to *Humidity* as *Sphygmomanometer* is to **?**",
+            "visual": "Relationship Hint: Measuring instrument -> Physical or physiological quantity measured.",
+            "options": [
+                "A) Pressure",
+                "B) Blood pressure",
+                "C) Precipitation",
+                "D) Heart beat"
+            ],
+            "answer": "B) Blood pressure",
+            "explanation": "A **hygrometer** measures atmospheric **humidity**. Similarly, a **sphygmomanometer** is a clinical instrument used to measure arterial **blood pressure** (R.S. Aggarwal, Ex. 1F, Q.5)."
+        },
+        {
+            "id": 8,
+            "category": "SSB OIR • Simple Analogy (Polity & Revisions)",
+            "question": "*Constitution* is to *Amendment* as *Book* is to **?**",
+            "visual": "Relationship Hint: Formal addition/correction mechanism for an official text vs. a printed book.",
+            "options": [
+                "A) Errata",
+                "B) Contents",
+                "C) Preface",
+                "D) Acknowledgement"
+            ],
+            "answer": "A) Errata",
+            "explanation": "Any change or correction in a **Constitution** is made through an **Amendment**. Similarly, corrections of printing errors in a **Book** are listed by means of **Errata** (R.S. Aggarwal, Ex. 1F, Q.1)."
+        },
+        {
+            "id": 9,
+            "category": "SSB OIR • Simple Analogy (Units & Mechanics)",
+            "question": "*Kilometre* is to *Distance* as *Poundal* is to **?**",
+            "visual": "Relationship Hint: Unit of measurement -> Physical quantity (FPS system).",
+            "options": [
+                "A) Density",
+                "B) Acceleration",
+                "C) Momentum",
+                "D) Force"
+            ],
+            "answer": "D) Force",
+            "explanation": "**Kilometre** is a unit of **distance**. **Poundal** is the unit of **force** in the Foot-Pound-Second (FPS) system ($1\\text{ pdl} = 1\\text{ lb}\\cdot\\text{ft/s}^2$; R.S. Aggarwal, Ex. 1F, Q.39)."
+        },
+        {
+            "id": 10,
+            "category": "SSB OIR • Simple Analogy (Metals & Chief Ores)",
+            "question": "*Aluminium* is to *Bauxite* as *Iron* is to **?**",
+            "visual": "Relationship Hint: First is the pure metal extracted from the second (its principal mineral ore).",
+            "options": [
+                "A) Pyrite",
+                "B) Magnesite",
+                "C) Pyrolusite",
+                "D) Haematite"
+            ],
+            "answer": "D) Haematite",
+            "explanation": "**Bauxite** is the chief ore used for extracting **aluminium**. Likewise, **haematite** ($\\text{Fe}_2\\text{O}_3$) is the primary ore used for the extraction of **iron** (R.S. Aggarwal, Ex. 1F, Q.45)."
+        },
+        {
+            "id": 11,
+            "category": "SSB OIR • Analogous Pair (Pharmacology)",
+            "question": "Select the lettered pair that expresses the **same relationship** as the original pair:\n\n**Aspirin : Headache**",
+            "visual": "Relationship Hint: First is the specific therapeutic drug used to cure/relieve the second.",
+            "options": [
+                "A) Amoeba : Dysentery",
+                "B) Acid : Burns",
+                "C) Quinine : Malaria",
+                "D) Iron : Anaemia"
+            ],
+            "answer": "C) Quinine : Malaria",
+            "explanation": "**Aspirin** is a medicine used to cure a **headache**. In the exact same drug-to-ailment relationship, **quinine** is a medicine used to treat **malaria** (Amoeba and Acid *cause* dysentery and burns, while Iron is a nutrient whose deficiency causes anaemia; R.S. Aggarwal, Ex. 1I, Q.49)."
+        },
+        {
+            "id": 12,
+            "category": "SSB OIR • Analogous Pair (Verbal Vocabulary)",
+            "question": "Select the lettered pair that expresses the **same relationship** as the original pair:\n\n**Proctor : Supervise**",
+            "visual": "Relationship Hint: Defining characteristic action performed by the person in the first word.",
+            "options": [
+                "A) Prophet : Rule",
+                "B) Prodigy : Wonder",
+                "C) Profiteer : Consume",
+                "D) Prodigal : Squander"
+            ],
+            "answer": "D) Prodigal : Squander",
+            "explanation": "A **proctor**'s defining role is to **supervise** students/examinations. Similarly, a **prodigal** (recklessly extravagant person) by definition **squanders** money or resources (R.S. Aggarwal, Ex. 1I, Q.52)."
+        },
+        {
+            "id": 13,
+            "category": "SSB OIR • Analogous Pair (Weapons & Action)",
+            "question": "Select the lettered pair that expresses the **same relationship** as the original pair:\n\n**Thrust : Spear**",
+            "visual": "Relationship Hint: First is the combat action performed using the weapon named second.",
+            "options": [
+                "A) Scabbard : Sword",
+                "B) Mangle : Iron",
+                "C) Bow : Arrow",
+                "D) Fence : Epee"
+            ],
+            "answer": "D) Fence : Epee",
+            "explanation": "To **thrust** is the action performed with a **spear**. Likewise, to **fence** is the combat sport/action performed using an **epee** (a pointed fencing sword; R.S. Aggarwal, Ex. 1J, Q.52)."
+        },
+        {
+            "id": 14,
+            "category": "SSB OIR • Analogous Pair (Defection & Allegiance)",
+            "question": "Select the lettered pair that expresses the **same relationship** as the original pair:\n\n**Apostate : Religion**",
+            "visual": "Relationship Hint: First is one who renounces, betrays, or abandons allegiance to the second.",
+            "options": [
+                "A) Potentate : Kingdom",
+                "B) Traitor : Country",
+                "C) Bureaucrat : Government",
+                "D) Jailor : Law"
+            ],
+            "answer": "B) Traitor : Country",
+            "explanation": "An **apostate** is a person who abandons or rebels against their **religion**. Similarly, a **traitor** is a person who betrays allegiance to their **country** (R.S. Aggarwal, Ex. 1J, Q.59)."
+        },
+        {
+            "id": 15,
+            "category": "SSB OIR • Double Analogy (Maritime & Rail)",
+            "question": "Find the correct combination of **I** and **II** so that both pairs share the exact same relationship:\n\n**I : Ship :: Platform : II**\n\n• **Options for I:** `(A) Captain`  `(B) Quay`  `(C) Port`  `(D) Shore`\n• **Options for II:** `(P) Coolie`  `(Q) Station`  `(R) Train`  `(S) Bench`",
+            "visual": "Relationship Hint: First is the raised structure alongside which the second (vessel/vehicle) halts to board passengers or cargo.",
+            "options": [
+                "A) BR  (Quay : Ship :: Platform : Train)",
+                "B) AP  (Captain : Ship :: Platform : Coolie)",
+                "C) CQ  (Port : Ship :: Platform : Station)",
+                "D) DS  (Shore : Ship :: Platform : Bench)"
+            ],
+            "answer": "A) BR  (Quay : Ship :: Platform : Train)",
+            "explanation": "A **quay** (`B`) is the landing structure alongside which a **ship** berths to load/unload, just as a **platform** is the structure alongside which a **train** (`R`) stops temporarily (R.S. Aggarwal, Ex. 1K, Q.8)."
+        },
+        {
+            "id": 16,
+            "category": "SSB OIR • Triad Analogy (Three-Word Relation)",
+            "question": "Choose the set of three words that shares the **same relationship** as the given triad:\n\n**Music : Guitar : Performer**",
+            "visual": "Relationship Hint: A [3rd word] uses the [2nd word] to produce/perform the [1st word].",
+            "options": [
+                "A) Dance : Tune : Instrument",
+                "B) Food : Recipe : Cook",
+                "C) Patient : Medicine : Doctor",
+                "D) Trick : Rope : Acrobat"
+            ],
+            "answer": "D) Trick : Rope : Acrobat",
+            "explanation": "A **performer** plays **music** on a **guitar**. Following the identical three-way structure, an **acrobat** performs a **trick** on a **rope** (R.S. Aggarwal, Type 7, Q.21)."
+        },
+        {
+            "id": 17,
+            "category": "SSB OIR • Number Analogy (Cubic Progression)",
+            "question": "Find the missing number that completes the numerical analogy:\n\n**8 : 28 :: 27 : ?**",
+            "visual": "Formula / Hint: Express 8 and 27 as perfect cubes x³, then relate the second term to (x + 1)³.",
+            "options": [
+                "A) 8",
+                "B) 28",
+                "C) 64",
+                "D) 65"
+            ],
+            "answer": "D) 65",
+            "explanation": "The relationship follows the pattern $x^3 : (x + 1)^3 + 1$:\n• First pair: $8 = 2^3$, and $(2 + 1)^3 + 1 = 3^3 + 1 = 27 + 1 = 28$.\n• Second pair: $27 = 3^3$, so $(3 + 1)^3 + 1 = 4^3 + 1 = 64 + 1 =$ **65** (R.S. Aggarwal, Type 8, Q.10)."
+        },
+        {
+            "id": 18,
+            "category": "SSB OIR • Number Analogy (Base & Exponent Shift)",
+            "question": "Find the missing number that completes the numerical analogy:\n\n**8 : 81 :: 64 : ?**",
+            "visual": "Formula / Hint: Compare powers x^y : (x + 1)^(y + 1). Note that 8 = 2³ and 64 = 4³.",
+            "options": [
+                "A) 125",
+                "B) 137",
+                "C) 525",
+                "D) 625"
+            ],
+            "answer": "D) 625",
+            "explanation": "The relationship follows $x^y : (x + 1)^{y + 1}$:\n• First pair: $8 = 2^3 \\rightarrow (2 + 1)^{3 + 1} = 3^4 = 81$.\n• Second pair: $64 = 4^3 \\rightarrow (4 + 1)^{3 + 1} = 5^4 =$ **625** (R.S. Aggarwal, Type 8, Q.14)."
+        },
+        {
+            "id": 19,
+            "category": "SSB OIR • Number-Set Analogy",
+            "question": "Choose the set of numbers from the options that is **most similar** to the given set:\n\n**Given Set : (6, 13, 22)**",
+            "visual": "Formula / Hint: Check the consecutive differences between the 1st, 2nd, and 3rd numbers in the set.",
+            "options": [
+                "A) (6, 13, 27)",
+                "B) (10, 16, 28)",
+                "C) (11, 18, 27)",
+                "D) (13, 19, 32)"
+            ],
+            "answer": "C) (11, 18, 27)",
+            "explanation": "In the given set $(6, 13, 22)$:\n• $2\\text{nd number} = 1\\text{st number} + 7$  ($6 + 7 = 13$)\n• $3\\text{rd number} = 2\\text{nd number} + 9$  ($13 + 9 = 22$)\n\nChecking **(11, 18, 27)**: $11 + 7 = 18$ and $18 + 9 = 27$, matching both differences exactly (R.S. Aggarwal, Type 8, Q.30)."
+        },
+        {
+            "id": 20,
+            "category": "SSB OIR • Alphabet Analogy (Reverse Decrement)",
+            "question": "Complete the letter-cluster analogy:\n\n**LOGIC : BHFNK :: CLERK : ?**",
+            "visual": "Formula / Hint: Reverse the order of letters in the word first, then compare each letter's alphabetical shift.",
+            "options": [
+                "A) XVRPA",
+                "B) QBKJA",
+                "C) LPRTU",
+                "D) JQDKB"
+            ],
+            "answer": "D) JQDKB",
+            "explanation": "Reverse the order of letters in the first group and shift each letter **1 step backward (-1)**:\n• **LOGIC** reversed $\\rightarrow$ `C I G O L` $\\xrightarrow{-1}$ `B H F N K`.\n• **CLERK** reversed $\\rightarrow$ `K R E L C`:\n  • K (-1) = **J**\n  • R (-1) = **Q**\n  • E (-1) = **D**\n  • L (-1) = **K**\n  • C (-1) = **B**\nCombining these gives **JQDKB** (R.S. Aggarwal, Type 9, Q.8)."
+        }
+    ]
+
+
+def get_question_bank(topic="Analogy (SSB OIR & R.S. Aggarwal • 20 Questions)"):
     """
     Returns the designated question bank.
-    Defaults to the authentic 20 Previous Year Questions from Clocks & Calendar (SSB NAOO Entry).
+    Defaults to the 20 Analogy Questions from R.S. Aggarwal & SSB Interview OIR.
     """
-    if topic and ("Clocks" in topic or "Calendar" in topic):
+    if topic and "Analogy" in topic:
+        return get_analogy_ssb_oir_bank()
+    elif topic and ("Clocks" in topic or "Calendar" in topic):
         return get_clocks_and_calendar_pyq_bank()
     elif topic and "Coding" in topic:
         return get_coding_decoding_pyq_bank()
@@ -1564,7 +1857,7 @@ def get_question_bank(topic="Clocks & Calendar (SSB NAOO Entry PYQs • 20 Quest
 def initialize_session_state():
     """Initializes and sanitizes Streamlit session state variables."""
     if "topic_mode" not in st.session_state:
-        st.session_state.topic_mode = "Clocks & Calendar (SSB NAOO Entry PYQs • 20 Questions)"
+        st.session_state.topic_mode = "Analogy (SSB OIR & R.S. Aggarwal • 20 Questions)"
     if "questions" not in st.session_state:
         st.session_state.questions = get_question_bank(st.session_state.topic_mode)
     if "current_q_idx" not in st.session_state:
@@ -1647,7 +1940,7 @@ def evaluate_user_answer(selected, correct_answer):
 # ==============================================================================
 def render_header():
     """Renders the top VAISE header."""
-    topic_label = st.session_state.get("topic_mode", "Clocks & Calendar (SSB NAOO Entry PYQs • 20 Questions)")
+    topic_label = st.session_state.get("topic_mode", "Analogy (SSB OIR & R.S. Aggarwal • 20 Questions)")
     st.markdown(f"""
     <div class="header-card">
         <span class="header-badge">VAISE • INTELLIGENCE & REASONING EVALUATION</span>
@@ -1686,17 +1979,20 @@ def render_sidebar():
         
         # Topic Module Selector
         topic_options = [
+            "Analogy (SSB OIR & R.S. Aggarwal • 20 Questions)",
             "Clocks & Calendar (SSB NAOO Entry PYQs • 20 Questions)",
             "Coding & Decoding (Mandatory Topic • 20 PYQs)",
             "Comprehensive Mixed Assessment (20 Questions)"
         ]
         curr_mode = st.session_state.get("topic_mode", topic_options[0])
-        if "Clocks" in curr_mode or "Calendar" in curr_mode:
+        if "Analogy" in curr_mode:
             curr_idx = 0
-        elif "Coding" in curr_mode:
+        elif "Clocks" in curr_mode or "Calendar" in curr_mode:
             curr_idx = 1
-        else:
+        elif "Coding" in curr_mode:
             curr_idx = 2
+        else:
+            curr_idx = 3
 
         selected_mode = st.selectbox(
             "📚 Question Bank Topic",
